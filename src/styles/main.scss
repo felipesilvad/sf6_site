@@ -1,0 +1,40 @@
+@import './settings';
+@import './base';
+@import './matches';
+
+.ardela {
+  font-family: 'Ardela Edge', sans-serif;
+  font-weight: bolder;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.roboto {
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
+}
+
+.link {
+  color: inherit!important;
+}
+
+.margin-main {
+  padding-top: 4.25rem;
+}
+
+.color-blue {
+  color: $blue!important;
+}
+
+.mb-0{
+  margin-bottom: 0rem!important;
+}
+.char-list-sm-title{
+  margin-top: 0.4rem;
+  margin-right: 0.3rem;
+  font-weight: bolder;
+}
+
+.font-bolder {
+  font-weight: bolder;
+}

@@ -1,0 +1,25 @@
+import React, { useState, useEffect } from 'react';
+import { query, collection, onSnapshot } from 'firebase/firestore';
+import db from '../../firebase';
+import {Link} from 'react-router-dom';
+import { Row, Col, Container} from 'react-bootstrap';
+import MatchesListItem from './MatchesListItem';
+
+function MatchesSide() {
+  const [matches, setMatches] = useState([])
+  useEffect (() => {
+    onSnapshot(query(collection(db, `/sets`)), (snapshot) => {
+      setMatches(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
+    });
+  }, [])
+
+  return (
+    <div>
+      {matches.map((match) => (
+        <MatchesListItem match={match}/>
+      ))}
+    </div>
+  );
+}
+
+export default MatchesSide;

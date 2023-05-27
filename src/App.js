@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Routes, Route} from 'react-router-dom'
+import MatchesList from './Components/Matches/MatchesList';
+import AddTournament from './Components/Tournaments/AddTournament';
+import HeaderComponent from './Components/Header';
+import TournamentsList from './Components/Tournaments/TournamentsList';
+import TournamentComponent from './Components/Tournaments/Tournament';
+import MatchComponent from './Components/Matches/Match';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <HeaderComponent />
+      <Routes>
+        <Route path='/' element={<MatchesList />} exact/>
+        <Route path='/sets/:id' element={<MatchComponent />} exact/>
+        <Route path='/tournaments' element={<TournamentsList />} exact/>
+        <Route path='/tournaments/:id' element={<TournamentComponent />} exact/>
+        <Route path='/add_tournament' element={<AddTournament />} exact/>
+      </Routes>
     </div>
   );
 }

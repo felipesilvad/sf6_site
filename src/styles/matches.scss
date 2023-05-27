@@ -1,0 +1,87 @@
+.match-item__bg{
+  background-color: $dark;
+  border: solid 0.15rem $dark;
+  border-radius: 0.2rem;
+  transition: 200ms;
+}
+
+.match-item__bg:hover{
+  transition: 200ms;
+  border: solid 0.15rem $blue;
+  color: white!important;
+}
+
+.match__char-bg {
+  position: relative;
+  text-align: center;
+}
+
+.match__char-img {
+  width: 18rem;
+  mask-image: linear-gradient(to right, rgba(0,0,0,1),rgba(0,0,0,1), rgba(0,0,0,0));
+  opacity: 0.4;
+  @media only screen and (min-width: $md) {
+    opacity: 0.95;
+  }
+}
+
+.match__char-img-2 {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.mc-img-game{
+  width: 10rem;
+}
+
+.match__char-txt-centered {
+  font-size: 1.8rem;
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  @media only screen and (min-width: $md) {
+    left: 80%;
+  }
+  transform: translate(-50%, -50%);
+  text-shadow: 2px 2px black;
+  text-align:start;
+}
+
+.mctc-p2{
+  text-align: end;
+  left: 75%;
+  @media only screen and (min-width: $md) {
+    left: 20%;
+  }
+}
+
+// .match-divider-bl {
+//   border-right: 0.1rem solid gray;
+// }
+.w-45 {
+  width: 45%!important;
+}
+.w-10 {
+  width: 10%!important;
+}
+
+.match-game-item-title {
+  z-index: 2;
+} 
+
+.current_games {
+  border: 0.1rem solid $blue;
+  border-radius: 0.25rem;
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* 720 / 1280 = 0.5625 */
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: inherit;
+}
