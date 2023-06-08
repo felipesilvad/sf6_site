@@ -1,12 +1,12 @@
 .match-item__bg{
   background-color: $dark;
   border: solid 0.15rem $dark;
-  border-radius: 0.2rem;
-  transition: 200ms;
+  border-radius: 0.25rem 1.85rem 0.25rem 0.25rem;
+  transition: 180ms;
 }
 
 .match-item__bg:hover{
-  transition: 200ms;
+  transition: 180ms;
   border: solid 0.15rem $blue;
   color: white!important;
 }
@@ -17,12 +17,9 @@
 }
 
 .match__char-img {
-  width: 18rem;
+  width: 13rem;
   mask-image: linear-gradient(to right, rgba(0,0,0,1),rgba(0,0,0,1), rgba(0,0,0,0));
-  opacity: 0.4;
-  @media only screen and (min-width: $md) {
-    opacity: 0.95;
-  }
+  opacity: 0.95;
 }
 
 .match__char-img-2 {
@@ -84,4 +81,23 @@
   top: 0;
   left: 0;
   height: inherit;
+}
+
+.match-txt-negative {
+  margin-top: -1.5rem!important;
+  z-index: 2!important;
+  position:relative;
+  text-shadow: 3px 3px 4px #000000;
+  white-space: nowrap;
+  background: linear-gradient(rgba(black,0), rgba(black,0.7));
+}
+
+.match_phase {
+  text-align: center;
+  margin-bottom: -2rem;
+  white-space: nowrap;
+  justify-content: center;
+  z-index: 2!important;
+  position:relative;
+  text-shadow: 3px 3px 4px #000000;
 }

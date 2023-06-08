@@ -1,0 +1,25 @@
+.loadingSeries {
+  width: 2.5rem;
+}
+.Selector{
+  color: black!important;
+}
+
+.toruney-img{
+  width: 1.8rem;
+}
+
+.tourney-title{
+  font-weight: 600;
+  // font-family: 'Ardela Edge', sans-serif;
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: -0.01rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.tourney-title-border {
+  border-radius: 0.25rem 2.7rem 0 0;
+}

@@ -8,7 +8,7 @@ function HeaderComponent() {
   return (
     <Navbar className='navbar-dark' bg="dark" expand="lg" fixed="top">
       <Container>
-        <Navbar.Brand href="/">brand here</Navbar.Brand>
+        <Navbar.Brand href="/">Logo and stuff</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

@@ -16,10 +16,10 @@ function MatchesList() {
   return (
     <Container>
       <Row>
-        <Col xs={2}>
+        <Col md={2}>
           search and stuff
         </Col>
-        <Col xs={10}>
+        <Col md={10}>
           {matches.map((match) => (
             <MatchesListItem match={match}/>
           ))}

@@ -28,7 +28,7 @@ function MatchComponent() {
       <Container className='match-container'>
         <Row>
           <Col md={8}>
-            <MatchVideo playerRef={playerRef} setPlayed={setPlayed} h={match.start_h} m={match.start_m} s={match.start_s} />
+            <MatchVideo playerRef={playerRef} videoUrl={match.videoUrl} setPlayed={setPlayed} h={match.start_h} m={match.start_m} s={match.start_s} />
             <div className='current_games'>
               <b><h2></h2></b>
               <b className='ardela'>
