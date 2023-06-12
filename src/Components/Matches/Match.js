@@ -7,6 +7,7 @@ import MatchTournament from './MatchTournament';
 import MatchGame from './MatchGame';
 import MatchVideo from './MatchVideo';
 import MatchesSide from './MatchesSide';
+import MatchesListPlayerFlag from './MatchesListPlayerFlag';
 
 function MatchComponent() {
   const id = useParams().id
@@ -30,12 +31,15 @@ function MatchComponent() {
           <Col md={8}>
             <MatchVideo playerRef={playerRef} videoUrl={match.videoUrl} setPlayed={setPlayed} h={match.start_h} m={match.start_m} s={match.start_s} />
             <div className='current_games'>
-              <b><h2></h2></b>
-              <b className='ardela'>
+              <h5 className='mx-1 ardela-nu'>
                 <MatchTournament id={String(match.tournament_id)} />
                 {" - "}
                 {match.phase}
-              </b>
+              </h5>
+              <div className='d-flex mx-2 justify-content-between mt-2'>
+                <MatchesListPlayerFlag id={match.Player1_id} />
+                <MatchesListPlayerFlag id={match.Player2_id} p2={true} />
+              </div>
               {match.games&&(
                 <>
                   <MatchGame game={match.games.game1} game_n={1} handleTime={handleTime} h={match.start_h} m={match.start_m} s={match.start_s} />
