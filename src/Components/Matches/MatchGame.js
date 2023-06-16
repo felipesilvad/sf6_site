@@ -24,10 +24,13 @@ function MatchGame({game, game_n,handleTime,h,m,s}) {
       return (
         <div className='m-0'>
           <div 
-            className='match-item__bg d-flex justify-content-between my-1 d-flex'
+            className='match-game-bg d-flex justify-content-between align-items-center my-1 d-flex'
             onClick={() => handleTime(getTimeStamp())} >
             <MatchGameChar id={game.charP1} />
-            <h6 className='ardela match-game-item-title'>Game{game_n}</h6>
+            <b className='ardela match-game-item-title'>
+              Game {game_n}
+              <b className='timestamp'> ({game.timestamp})</b>
+            </b>
             <MatchGameChar id={game.charP2} p2={true} />
           </div>
         </div>

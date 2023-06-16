@@ -4,7 +4,7 @@ import db from '../../firebase';
 import {countries} from '../../data.ts'
 import ReactCountryFlag from "react-country-flag"
 
-function MatchesListPlayerFlag({id, p2}) {
+function MatchPlayerFlag({id, p2}) {
   const [player, setPlayer] = useState([])
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function MatchesListPlayerFlag({id, p2}) {
   if (player) {
     if (p2 !== true) {
       return (
-        <div className={`match-txt-negative`}>
+        <div>
           <b className="mx-1 txt-shadow ardela-nu">{player.gamerTag}</b>
           {player.country&&(
             <ReactCountryFlag className='mb-1' countryCode={getFlagCode(player.country)} svg />
@@ -30,7 +30,7 @@ function MatchesListPlayerFlag({id, p2}) {
       )
     } else {
       return (
-        <div className={`match-txt-negative text-right`}>
+        <div className={`text-right`}>
           {player.country&&(
             <ReactCountryFlag className='mb-1' countryCode={getFlagCode(player.country)} svg />
           )}
@@ -41,4 +41,4 @@ function MatchesListPlayerFlag({id, p2}) {
   }
 }
 
-export default MatchesListPlayerFlag;
+export default MatchPlayerFlag;
