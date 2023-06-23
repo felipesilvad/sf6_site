@@ -17,12 +17,25 @@ function MatchesListItem({match}) {
           {match.phase}
         </div>
         <div className='d-flex'>
-          <div className='w-50 d-flex justify-content-start h-100 align-items-center match-divider-bl'>
-            <MatchesListItemChar id={uniqCharP1[0]} player={match.Player1_id} />
-          </div>
-          <div className='w-50 d-flex justify-content-end h-100 align-items-center'>
-            <MatchesListItemChar id={uniqCharP2[0]} p2={true} player={match.Player2_id} />
-          </div>
+          {(match.switch) ? (
+            <>
+              <div className='w-50 d-flex justify-content-start h-100 align-items-center match-divider-bl'>
+                <MatchesListItemChar cntrl={match.games.game1.cP2} id={uniqCharP2[0]} player={match.Player2_id} />
+              </div>
+              <div className='w-50 d-flex justify-content-end h-100 align-items-center'>
+                <MatchesListItemChar cntrl={match.games.game1.cP1} id={uniqCharP1[0]} p2={true} player={match.Player1_id} />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className='w-50 d-flex justify-content-start h-100 align-items-center match-divider-bl'>
+                <MatchesListItemChar cntrl={match.games.game1.cP1} id={uniqCharP1[0]} player={match.Player1_id} />
+              </div>
+              <div className='w-50 d-flex justify-content-end h-100 align-items-center'>
+                <MatchesListItemChar cntrl={match.games.game1.cP2} id={uniqCharP2[0]} p2={true} player={match.Player2_id} />
+              </div>
+            </>
+          )}
         </div>
       </div>
     </Link>

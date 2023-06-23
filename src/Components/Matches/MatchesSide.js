@@ -12,7 +12,7 @@ function MatchesSide() {
   }, [])
 
   return (
-    <div>
+    <div className='matches-side__div custom-scrollbar'>
       {matches.map((match) => (
         <MatchesListItem match={match}/>
       ))}

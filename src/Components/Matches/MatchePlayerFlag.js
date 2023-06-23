@@ -15,29 +15,36 @@ function MatchPlayerFlag({id, p2}) {
 
   const getFlagCode = (txt) => {
     const theCountry = countries.filter(country => country.name === txt)
-    return theCountry[0].code
+    // return theCountry[0].code
+    return "AX"
   }
 
-  if (player) {
-    if (p2 !== true) {
-      return (
-        <div>
-          <b className="mx-1 txt-shadow ardela-nu">{player.gamerTag}</b>
-          {player.country&&(
-            <ReactCountryFlag className='mb-1' countryCode={getFlagCode(player.country)} svg />
-          )}
-        </div>
-      )
-    } else {
-      return (
-        <div className={`text-right`}>
-          {player.country&&(
-            <ReactCountryFlag className='mb-1' countryCode={getFlagCode(player.country)} svg />
-          )}
-          <b className="mx-1 txt-shadow ardela-nu">{player.gamerTag}</b>
-        </div>
-      )
-    }
+  if (p2 !== true) {
+    return (
+      <div>
+        {player&&(
+          <>
+        <b className="mx-1 txt-shadow ardela-nu">{player.gamerTag}</b>
+            {player.country&&(
+              <ReactCountryFlag className='mb-1' countryCode={getFlagCode(player.country)} svg />
+            )}
+          </>
+        )}
+      </div>
+    )
+  } else {
+    return (
+      <div className={`text-right`}>
+        {player&&(
+          <>
+            {player.country&&(
+              <ReactCountryFlag className='mb-1' countryCode={getFlagCode(player.country)} svg />
+            )}
+            <b className="mx-1 txt-shadow ardela-nu">{player.gamerTag}</b>
+          </>
+        )}
+      </div>
+    )
   }
 }
 

@@ -84,12 +84,12 @@
 }
 
 .match-txt-negative {
-  margin-top: -1.5rem!important;
+  margin-top: -1rem!important;
   z-index: 2!important;
   position:relative;
   text-shadow: 3px 3px 4px #000000;
   white-space: nowrap;
-  background: linear-gradient(rgba(black,0), rgba(black,0.7));
+  background: linear-gradient(rgba(black,0), rgba(black,1));
 }
 
 .match_phase {
@@ -108,13 +108,77 @@
 }
 
 .match-game-bg:hover {
-  -webkit-box-shadow: 0px 0px 10px 11px rgba(0,162,226,0.5);
-  -moz-box-shadow: 0px 0px 10px 11px rgba(0,162,226,0.5);
-  box-shadow: 0px 0px 10px 11px rgba(0,162,226,0.5);
+  -webkit-box-shadow: 0px 0px 14px 9px rgba(0,162,226,0.4);
+  -moz-box-shadow: 0px 0px 14px 9px rgba(0,162,226,0.4);
+  box-shadow: 0px 0px 14px 9px rgba(0,162,226,0.4);
 }
 
+.match-game-active {
+  background-color: rgba($blue,0.7);
+  -webkit-box-shadow: 0px 0px 9px 5px rgba(0,162,226,0.4);
+  -moz-box-shadow: 0px 0px 9px 5px rgba(0,162,226,0.4);
+  box-shadow: 0px 0px 9px 5px rgba(0,162,226,0.4);
+}
 
 .timestamp {
   font-weight: normal;
-  color: gray;
+  color: rgba(white,0.6);
+  font-size: 1.2;
 }
+
+.cntrl-img-div {
+  margin-bottom: -1.8rem;
+  z-index: 2;
+  position:relative;
+}
+
+.cntrl-img {
+  width: 1.8rem;
+}
+
+.cntrl-img-div__game {
+  margin-bottom: -1.55rem;
+  z-index: 2;
+  position:relative;
+}
+
+.cntrl-img__game {
+  width: 1.5rem;
+}
+
+.matches-side__div{
+  vertical-align: initial !important;
+  max-height: 90vh;
+}
+
+.custom-scrollbar {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0.55rem;
+  height: 0.6rem;
+  background-color: $lighter;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #00a2e2;
+  border-radius: 2rem;
+}
+
+.game_timestamp {
+  text-align: center;
+  margin-bottom: -2.5rem;
+  margin-top: 1rem;
+  white-space: nowrap;
+  justify-content: center;
+  z-index: 2!important;
+  position:relative;
+  text-shadow: 3px 3px 4px #000000;
+  cursor: pointer;
+}
+
+.match-game-item-title {
+  z-index: 2;
+} 

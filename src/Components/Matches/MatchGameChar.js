@@ -3,7 +3,7 @@ import { Image } from 'react-bootstrap';
 import { doc, onSnapshot,} from 'firebase/firestore';
 import db from '../../firebase';
 
-function MatchGameChar({id, p2}) {
+function MatchGameChar({cntrl, id, p2}) {
   const img = `https://firebasestorage.googleapis.com/v0/b/sf6-vods.appspot.com/o/Chars%2F${id}_.png?alt=media`
   const [char, setChar] = useState([])
 
@@ -15,8 +15,11 @@ function MatchGameChar({id, p2}) {
   
   if (char) {
     return (
-      <div className='match__char-bg d-flex'>
-        <Image src={img} className={`match__char-img mc-img-game ${p2&&('match__char-img-2')}`} />
+      <div className=''>
+        <div className={`cntrl-img-div__game ${p2&&('text-right')}`}>
+          <Image src={require(`../../Assets/img/logo-${cntrl}.png`)} className="cntrl-img__game" />
+        </div>
+        <Image src={img} className={`match__char-img rounded mc-img-game ${p2&&('match__char-img-2')}`} />
       </div>
     )
   }

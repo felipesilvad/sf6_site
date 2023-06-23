@@ -3,6 +3,7 @@
 @import './matches';
 @import './tournament';
 @import './stats';
+@import './menu';
 
 .ardela {
   font-family: 'Ardela Edge', sans-serif;
@@ -56,4 +57,8 @@
 
 .font-weight-normal {
   font-weight: normal!important;
+}
+
+#react-select-2-listbox, #react-select-3-listbox{
+  z-index: 3!important;
 }

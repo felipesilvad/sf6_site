@@ -18,6 +18,14 @@ body {
   font-size: var(--bs-nav-tabs-link-font-size)!important;
 }
 
+hr {
+  margin: 0rem 0!important;
+  color: inherit;
+  border: 0;
+  border-top: 1px solid;
+  opacity: .25;
+}
+
 .ml-1 {
   margin-left: 0.25rem;
 }

@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import db from '../../firebase';
 import { query, collection, onSnapshot} from 'firebase/firestore';
-import {Link} from 'react-router-dom';
 import {Container,Image,Table} from 'react-bootstrap';
 import MatchUpChartRow from './MatchUpChartRow'
 import MatchUpChartRowTotal from './MatchUpChartRowTotal'
 
-
 const MatchUpChart = () => {
-  const [matches, setMatches] = useState([])
   const [games,setGames] = useState([]);
 
   useEffect (() => {
     onSnapshot(query(collection(db, `/sets`)), (snapshot) => {
-      setMatches(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
       snapshot.docs.map(doc => (
         setGames(oldGames => [...oldGames,doc.data().games.game1,doc.data().games.game2,doc.data().games.game3,doc.data().games.game4,doc.data().games.game5] )
       ))
@@ -32,8 +28,6 @@ const MatchUpChart = () => {
       return true
     } else {return false}
   }
-
-  console.log(games.filter(filterEmptyGames))
 
   return (
     <Container>
@@ -60,10 +54,10 @@ const MatchUpChart = () => {
                   {char.title}
                 </b>
               </td>
-              <MatchUpChartRowTotal char_id={char.id} games={games} />
+              <MatchUpChartRowTotal char_id={char.id} games={games.filter(filterEmptyGames)} />
               {!! chars &&(chars.map((char2) => (
                 (char.id !== char2.id) ? (
-                  <MatchUpChartRow games={games} char_id={char.id} char2_id={char2.id} />
+                  <MatchUpChartRow games={games.filter(filterEmptyGames)} char_id={char.id} char2_id={char2.id} />
                 ) : (
                   <td className="p-0 text-center">
                     -

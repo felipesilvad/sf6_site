@@ -14,6 +14,8 @@ function HeaderComponent() {
           <Nav className="me-auto">
             <Nav.Link className='ardela menu-button' href="/">Home</Nav.Link>
             <Nav.Link className='ardela menu-button' href="/tournaments">Tournaments</Nav.Link>
+            <Nav.Link className='ardela menu-button' href="/stats/chars">Matchup Chart</Nav.Link>
+
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
