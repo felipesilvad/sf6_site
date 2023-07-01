@@ -7,6 +7,7 @@ import TournamentsList from './Components/Tournaments/TournamentsList';
 import TournamentComponent from './Components/Tournaments/Tournament';
 import MatchComponent from './Components/Matches/Match';
 import MatchUpChart from './Components/Stats/MatchUpChart';
+import CharDetail from './Components/Character/CharDetail';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/tournaments/:id' element={<TournamentComponent />} exact/>
         <Route path='/add_tournament' element={<AddTournament />} exact/>
         <Route path='/stats/chars' element={<MatchUpChart />} exact/>
+        <Route path='/chars/:id' element={<CharDetail />} exact/>
       </Routes>
     </div>
   );

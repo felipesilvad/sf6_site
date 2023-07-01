@@ -7,7 +7,7 @@ import MatchTournament from './MatchTournament';
 import MatchGame from './MatchGame';
 import MatchVideo from './MatchVideo';
 import MatchesSide from './MatchesSide';
-import MatchPlayerFlag from './MatchePlayerFlag';
+import MatchPlayerFlag from './MatchPlayerFlag';
 
 function MatchComponent() {
   const id = useParams().id

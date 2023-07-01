@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { query, collection, onSnapshot } from 'firebase/firestore';
 import db from '../../firebase';
-import {Link} from 'react-router-dom';
-import { Row, Col, Container} from 'react-bootstrap';
+import { Row, Col, Container, Button} from 'react-bootstrap';
 import MatchesListItem from './MatchesListItem';
 import FilterMatches from './FilterMatches';
 
@@ -78,6 +77,9 @@ function MatchesList() {
     }
   }
 
+  const [matchesN, setMatchesN] = useState(32)
+  const slicedMathces = matches.slice(0, matchesN)
+
   return (
     <Container>
       <Row>
@@ -85,9 +87,10 @@ function MatchesList() {
           <FilterMatches reloadFilterChar1={reloadFilterChar1} reloadFilterChar2={reloadFilterChar2} />
         </Col>
         <Col md={10}>
-          {matches.filter(filterChar1).filter(filterChar2).map((match) => (
+          {slicedMathces.filter(filterChar1).filter(filterChar2).map((match) => (
             <MatchesListItem match={match}/>
           ))}
+          <Button onClick={() => setMatchesN(matchesN+16)}>Load More</Button>
         </Col>
       </Row>
     </Container>

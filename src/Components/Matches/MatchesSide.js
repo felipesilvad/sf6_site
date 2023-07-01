@@ -11,9 +11,73 @@ function MatchesSide() {
     });
   }, [])
 
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  const [char1, setChar1] = useState('');
+  async function reloadFilterChar1(value) {
+    setChar1(false)
+    await sleep(200);
+    setChar1(value)
+  }
+  function filterChar1(match) {
+    if (char1 === "") {
+      return true
+    } else {
+      if (char1 === char2) {
+        return (match.games.game1.charP1 === char2 && match.games.game1.charP2 === char2) ||
+        (!! match.games.game2 &&(match.games.game2.charP1 === char2 && match.games.game2.charP2 === char2)) ||
+        (!! match.games.game3 &&(match.games.game3.charP1 === char2 && match.games.game3.charP2 === char2)) ||
+        (!! match.games.game4 &&(match.games.game4.charP1 === char2 && match.games.game4.charP2 === char2)) ||
+        (!! match.games.game5 &&(match.games.game5.charP1 === char2 && match.games.game5.charP2 === char2)) ||
+        (!! match.games.game6 &&(match.games.game6.charP1 === char2 && match.games.game6.charP2 === char2)) ||
+        (!! match.games.game7 &&(match.games.game7.charP1 === char2 && match.games.game7.charP2 === char2))
+      } else {
+        return  (match.games.game1.charP1 === char1 || match.games.game1.charP2 === char1) ||
+        (!! match.games.game2 &&(match.games.game2.charP1 === char1 || match.games.game2.charP2 === char1)) ||
+        (!! match.games.game3 &&(match.games.game3.charP1 === char1 || match.games.game3.charP2 === char1)) ||
+        (!! match.games.game4 &&(match.games.game4.charP1 === char1 || match.games.game4.charP2 === char1)) ||
+        (!! match.games.game5 &&(match.games.game5.charP1 === char1 || match.games.game5.charP2 === char1)) ||
+        (!! match.games.game6 &&(match.games.game6.charP1 === char1 || match.games.game6.charP2 === char1)) ||
+        (!! match.games.game7 &&(match.games.game7.charP1 === char1 || match.games.game7.charP2 === char1))
+      }
+    }
+  }
+
+  const [char2, setChar2] = useState('');
+  async function reloadFilterChar2(value) {
+    setChar2(false)
+    await sleep(200);
+    setChar2(value)
+  }
+  function filterChar2(match) {
+    if (char2 === "") {
+      return true
+    } else {
+      if (char1 === char2) {
+        return (match.games.game1.charP1 === char2 && match.games.game1.charP2 === char2) ||
+        (!! match.games.game2 &&(match.games.game2.charP1 === char2 && match.games.game2.charP2 === char2)) ||
+        (!! match.games.game3 &&(match.games.game3.charP1 === char2 && match.games.game3.charP2 === char2)) ||
+        (!! match.games.game4 &&(match.games.game4.charP1 === char2 && match.games.game4.charP2 === char2)) ||
+        (!! match.games.game5 &&(match.games.game5.charP1 === char2 && match.games.game5.charP2 === char2)) ||
+        (!! match.games.game6 &&(match.games.game6.charP1 === char2 && match.games.game6.charP2 === char2)) ||
+        (!! match.games.game7 &&(match.games.game7.charP1 === char2 && match.games.game7.charP2 === char2))
+      } else {
+        return (match.games.game1.charP1 === char2 || match.games.game1.charP2 === char2) ||
+        (!! match.games.game2 &&(match.games.game2.charP1 === char2 || match.games.game2.charP2 === char2)) ||
+        (!! match.games.game3 &&(match.games.game3.charP1 === char2 || match.games.game3.charP2 === char2)) ||
+        (!! match.games.game4 &&(match.games.game4.charP1 === char2 || match.games.game4.charP2 === char2)) ||
+        (!! match.games.game5 &&(match.games.game5.charP1 === char2 || match.games.game5.charP2 === char2)) ||
+        (!! match.games.game6 &&(match.games.game6.charP1 === char2 || match.games.game6.charP2 === char2)) ||
+        (!! match.games.game7 &&(match.games.game7.charP1 === char2 || match.games.game7.charP2 === char2))
+      }
+    }
+  }
+
   return (
     <div className='matches-side__div custom-scrollbar'>
-      {matches.map((match) => (
+      {matches.filter(filterChar1).filter(filterChar2).map((match) => (
         <MatchesListItem match={match}/>
       ))}
     </div>

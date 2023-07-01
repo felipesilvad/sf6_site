@@ -15,7 +15,9 @@ function MatchesListPlayerFlag({id, p2}) {
 
   const getFlagCode = (txt) => {
     const theCountry = countries.filter(country => country.name === txt)
-    return theCountry[0].code
+    if (theCountry[0]) {
+      return theCountry[0].code
+    }
   }
 
   if (player) {

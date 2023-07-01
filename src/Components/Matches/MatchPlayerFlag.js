@@ -15,8 +15,9 @@ function MatchPlayerFlag({id, p2}) {
 
   const getFlagCode = (txt) => {
     const theCountry = countries.filter(country => country.name === txt)
-    // return theCountry[0].code
-    return "AX"
+    if (theCountry[0]) {
+      return theCountry[0].code
+    }
   }
 
   if (p2 !== true) {
@@ -24,7 +25,7 @@ function MatchPlayerFlag({id, p2}) {
       <div>
         {player&&(
           <>
-        <b className="mx-1 txt-shadow ardela-nu">{player.gamerTag}</b>
+          <b className="mx-1 txt-shadow ardela-nu">{player.gamerTag}</b>
             {player.country&&(
               <ReactCountryFlag className='mb-1' countryCode={getFlagCode(player.country)} svg />
             )}
