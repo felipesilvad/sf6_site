@@ -26,7 +26,7 @@ function MatchComponent() {
       + 
     (parseInt(timestamp.split(".")[0].split(":")[2]))
   }
-  const playerRef = useRef(null);
+  const playerRef = useRef('');
   const handleTime = (time) => {
     playerRef.current.seekTo(time)
   }
@@ -96,31 +96,27 @@ function MatchComponent() {
     return (
       <Container className='match-container'>
         <Row>
-          <Col md={8}>
+          <Col md={8} className='pr-0'>
+            <MatchTournament id={String(match.tournament_id)} phase={match.phase} phase_id={match.identifier} />
             <MatchVideo playerRef={playerRef} setPlayed={setPlayed} videoUrl={match.videoUrl}
             h={match.start_h} m={match.start_m} s={match.start_s} />
-            <div className='current_games'>
-              <h5 className='mx-1 ardela-nu mt-2'>
-                <MatchTournament id={String(match.tournament_id)} />
-                {" - "}
-                {match.phase}
-              </h5>
-              <hr />
+            <div className='current_games mb-3'>
               <div className='d-flex mx-2 justify-content-between mt-2'>
                 {(match.switch) ? (
                   <>
                     <MatchPlayerFlag id={match.Player2_id} />
-                    <h4 className='ardela'>VS</h4>
+                    <h5 className='ardela'>VS</h5>
                     <MatchPlayerFlag id={match.Player1_id} p2={true} />
                   </>
                 ): (
                   <>
                     <MatchPlayerFlag id={match.Player1_id} />
-                    <h4 className='ardela'>VS</h4>
+                    <h5 className='ardela'>VS</h5>
                     <MatchPlayerFlag id={match.Player2_id} p2={true} />
                   </>
                 )}
               </div>
+              <hr />
               {match.games&&(
                 <>
                   <MatchGame getActiveGame={getActiveGame} sw={match.switch} game={match.games.game1} game_n={1} handleTime={handleTime} getTimeStamp={getTimeStamp} />

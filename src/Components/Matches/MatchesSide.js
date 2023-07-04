@@ -29,11 +29,18 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
     setLoading(false)
   }
 
+  // OPEN FILTER MODAL
+  const [showModal, setShowModal] = useState(false);
+
+  const closeModal = () => setShowModal(false);
+  const openModal = () => setShowModal(true);
+
   // FILTERS
   const [char1, setChar1] = useState('');
   async function reloadFilterChar1(value) {
     setChar1(false)
     setMatchesN(64)
+    closeModal()
     loadTime(200)
     setChar1(value)
   }
@@ -65,6 +72,7 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
   async function reloadFilterChar2(value) {
     setChar2(false)
     setMatchesN(64)
+    closeModal()
     loadTime(200)
     setChar2(value)
   }
@@ -96,6 +104,7 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
   async function reloadFilterCntrl1(value) {
     setCntrl1(false)
     setMatchesN(64)
+    closeModal()
     loadTime(200)
     setCntrl1(value)
   }
@@ -117,6 +126,7 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
   async function reloadFilterCntrl2(value) {
     setCntrl2(false)
     setMatchesN(64)
+    closeModal()
     loadTime(200)
     setCntrl2(value)
   }
@@ -134,10 +144,11 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
     }
   }
   
-  const [player1, setPlayer1] = useState('');
+  const [player1, setPlayer1] = useState('')
   async function reloadFilterPlayer1(value) {
     setPlayer1('')
     setMatchesN(64)
+    closeModal()
     loadTime(200)
     setPlayer1(value)
   }
@@ -149,10 +160,11 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
     }
   }
 
-  const [player2, setPlayer2] = useState('');
+  const [player2, setPlayer2] = useState('')
   async function reloadFilterPlayer2(value) {
     setPlayer2('')
     setMatchesN(64)
+    closeModal()
     loadTime(200)
     setPlayer2(value)
   }
@@ -163,12 +175,32 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
       return (match.Player1_id === player2 || match.Player2_id === player2)
     }
   }
-  // OPEN FILTER MODAL
-  const [showModal, setShowModal] = useState(false);
 
-  const closeModal = () => setShowModal(false);
-  const openModal = () => setShowModal(true);
+  const [tourney, setTourney] = useState('')
+  async function reloadFilterTourney(value) {
+    setTourney('')
+    setMatchesN(64)
+    closeModal()
+    loadTime(200)
+    setTourney(value)
+  }
+  function filterTourney(match) {
+    if (tourney === "") {
+      return true
+    } else {
+      return (String(match.tournament_id) === tourney)
+    }
+  }
 
+  const clearFilters = () => {
+    reloadFilterChar1('')
+    reloadFilterChar2('')
+    reloadFilterCntrl1('')
+    reloadFilterCntrl2('')
+    reloadFilterPlayer1('')
+    reloadFilterPlayer2('')
+    setTourney('')
+  }
   // ALGORITHM
   function shuffle(a, b) {
     return parseInt(parseInt(a.id).toString(16).replace(/\D/g, ''))
@@ -207,7 +239,7 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
   }
 
   const [matchesN, setMatchesN] = useState(64)
-  const filteredMatches = matches.filter(filterChar1).filter(filterChar2).filter(filterCntrl1).filter(filterCntrl2).filter(filterPlayer1).filter(filterPlayer2)
+  const filteredMatches = matches.filter(filterChar1).filter(filterChar2).filter(filterCntrl1).filter(filterCntrl2).filter(filterPlayer1).filter(filterPlayer2).filter(filterTourney)
   const nextMatches = filteredMatches.filter(nextMatchesFilter).sort(orderSecs)
   const shuffledMatches = nextMatches
         .concat(filteredMatches.filter(sameTourneyMatches))
@@ -227,6 +259,8 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
         reloadFilterCntrl1={reloadFilterCntrl1} reloadFilterCntrl2={reloadFilterCntrl2}
         player1={player1} player2={player2}
         reloadFilterPlayer1={reloadFilterPlayer1} reloadFilterPlayer2={reloadFilterPlayer2}
+        reloadFilterTourney={reloadFilterTourney} tourney={tourney}
+        clearFilters={clearFilters}
       />
 
       {(loading)?(
@@ -253,10 +287,11 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
         </div>
       )}
 
-      <FilterSelectModal showModal={showModal} closeModal={closeModal}
+      <FilterSelectModal showModal={showModal} closeModal={closeModal} setShowModal={setShowModal}
         reloadFilterChar1={reloadFilterChar1} reloadFilterChar2={reloadFilterChar2} char1={char1} char2={char2}
         reloadFilterCntrl1={reloadFilterCntrl1} reloadFilterCntrl2={reloadFilterCntrl2} cntrl1={cntrl1} cntrl2={cntrl2}
         reloadFilterPlayer1={reloadFilterPlayer1} reloadFilterPlayer2={reloadFilterPlayer2} player1={player1} player2={player2}
+        reloadFilterTourney={reloadFilterTourney} tourney={tourney}
       />
 
     </>

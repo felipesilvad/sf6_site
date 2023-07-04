@@ -5,10 +5,11 @@ import { query, collection, onSnapshot} from 'firebase/firestore';
 import db from '../../firebase';
 import {Image} from 'react-bootstrap';
 
-function FilterSelectModal({showModal,closeModal,
+function FilterSelectModal({showModal,closeModal,setShowModal,
   reloadFilterChar1,reloadFilterChar2,char1,char2,
   reloadFilterCntrl1,reloadFilterCntrl2,cntrl1,cntrl2,
-  reloadFilterPlayer1,reloadFilterPlayer2,player1,player2
+  reloadFilterPlayer1,reloadFilterPlayer2,player1,player2,
+  reloadFilterTourney, tourney
 }) {
   const [chars, setChars] = useState([])
   useEffect (() => {
@@ -46,8 +47,26 @@ function FilterSelectModal({showModal,closeModal,
     return {label: currentPlayer[0].label, value: playerVar}
   }
 
+  const [tourneys, settourneys] = useState([])
+  useEffect (() => {
+    onSnapshot(query(collection(db, `/tournaments`)), (snapshot) => {
+      settourneys(snapshot.docs.map(doc => ({label: doc.data().name, value: doc.id})))
+    });
+  }, [])
+  const tourneyOptions = [
+    { value: '', label: 'Any' },
+    ...tourneys
+  ]
+
+  const getCurrentTourney = (tourneyVar) => {
+    const currentTourney = tourneyOptions.filter(function(tourney) {
+      return tourney.value === tourneyVar;
+    });
+    return {label: currentTourney[0].label, value: tourneyVar}
+  }
+
   return (
-    <Modal show={showModal} onHide={() => closeModal()}>
+    <Modal show={showModal} onHide={() => setShowModal(false)}>
       <Modal.Header closeButton>
         <Modal.Title><b className='ardela'>FILTER VODS</b></Modal.Title>
       </Modal.Header>
@@ -109,7 +128,7 @@ function FilterSelectModal({showModal,closeModal,
         <Select 
           options={playerOptions} onChange={e => reloadFilterPlayer1(e.value)}
           className="Selector w-100" isSearchable placeholder="Player 1"
-          // defaultValue={getCurrentPlayer(player1)}
+          defaultValue={getCurrentPlayer(player1)}
         />
         <div className='d-flex justify-content-center'>
           <label className='ardela'>VS</label>
@@ -117,7 +136,14 @@ function FilterSelectModal({showModal,closeModal,
         <Select 
           options={playerOptions} onChange={e => reloadFilterPlayer2(e.value)}
           className="Selector w-100" isSearchable placeholder="Player 2"
-          // defaultValue={getCurrentPlayer(player2)}
+          defaultValue={getCurrentPlayer(player2)}
+        />
+
+        <h4 className='ardela mt-3'>Tournaments</h4>
+        <Select 
+          options={tourneyOptions} onChange={e => reloadFilterTourney(e.value)}
+          className="Selector w-100" isSearchable placeholder="Tournaments"
+          defaultValue={getCurrentTourney(tourney)}
         />
       </Modal.Body>
     </Modal>

@@ -17,6 +17,8 @@
 .filter__bg {
   background-color: $lighter;
   border-radius: 0.25rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.12rem;
   transition: 300ms;
   cursor: pointer;
 }
@@ -50,6 +52,12 @@
   border: none!important;
   font-size: 1rem;
   font-weight: 500!important;
+  padding-top: 0.2rem!important;
+}
+
+.clear-filter-button{
+  background-color: $red!important;
+  border-radius: 0!important;
 }
 
 .filter-options-x {
@@ -79,4 +87,10 @@
 .cntrl-select-active{
   opacity: 1;
   background-color: $lighter;
+}
+
+.touney-title_filter {
+  margin-top: 0.1rem;
+  margin-bottom: 0;
+  padding-right: 0.2rem;
 }

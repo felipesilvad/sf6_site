@@ -2,21 +2,27 @@ import React from 'react';
 import {Button} from 'react-bootstrap';
 import FilterHeadChar from './FilterHeadChar';
 import FilterHeadCntrl from './FilterHeadCntrl';
-import {BiSearchAlt} from 'react-icons/bi'
+import {BiSearchAlt,BiSolidTrash} from 'react-icons/bi'
 import FilterHeadPlayer from './FilterHeadPlayer';
+import FilterHeadTourney from './FilterHeadTourney';
 
 function FilterSelected({char1,char2,reloadFilterChar1,reloadFilterChar2,openModal,
-  reloadFilterCntrl1,reloadFilterCntrl2,cntrl1,cntrl2,
-  reloadFilterPlayer1,reloadFilterPlayer2,player1,player2
+  reloadFilterCntrl1,reloadFilterCntrl2,cntrl1,cntrl2,clearFilters,
+  reloadFilterPlayer1,reloadFilterPlayer2,player1,player2,
+  reloadFilterTourney, tourney
 }) {
 
   return (
-    <div className='filter-select d-flex flex-wrap my-1'>
-      <Button className="add-filter-button ardela px-2 px-1"
+    <div className='filter-select d-flex my-1' >
+      <Button className="add-filter-button ardela px-2"
       onClick={() => openModal()}>
         <BiSearchAlt />
       </Button>
-      <div className='d-flex flex-wrap align-self-center'>
+      <Button className="add-filter-button ardela clear-filter-button px-2"
+      onClick={() => clearFilters()}>
+        <BiSolidTrash />
+      </Button>
+      <div className='d-flex flex-wrap align-self-center' >
         {cntrl1&&(
           <FilterHeadCntrl cntrl={cntrl1} reloadFilter={reloadFilterCntrl1} />
         )}
@@ -34,6 +40,9 @@ function FilterSelected({char1,char2,reloadFilterChar1,reloadFilterChar2,openMod
         )}
         {player2&&(
           <FilterHeadPlayer id={player2} reloadFilter={reloadFilterPlayer2} />
+        )}
+        {tourney&&(
+          <FilterHeadTourney id={tourney} reloadFilter={reloadFilterTourney} />
         )}
       </div>
     </div>
