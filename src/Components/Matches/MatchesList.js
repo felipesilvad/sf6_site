@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { query, collection, onSnapshot } from 'firebase/firestore';
 import db from '../../firebase';
-import { Row, Col, Container, Button} from 'react-bootstrap';
+import { Row, Col, Container} from 'react-bootstrap';
 import MatchesListItem from './MatchesListItem';
 import FilterMatches from './FilterMatches';
+import {BsChevronCompactDown} from 'react-icons/bs'
 
 function MatchesList() {
   const [matches, setMatches] = useState([])
@@ -20,6 +21,7 @@ function MatchesList() {
   const [char1, setChar1] = useState('');
   async function reloadFilterChar1(value) {
     setChar1(false)
+    setMatchesN(64)
     await sleep(200);
     setChar1(value)
   }
@@ -50,6 +52,7 @@ function MatchesList() {
   const [char2, setChar2] = useState('');
   async function reloadFilterChar2(value) {
     setChar2(false)
+    setMatchesN(64)
     await sleep(200);
     setChar2(value)
   }
@@ -77,8 +80,15 @@ function MatchesList() {
     }
   }
 
-  const [matchesN, setMatchesN] = useState(32)
-  const slicedMathces = matches.slice(0, matchesN)
+  function shuffle(a, b) {
+    return parseInt(parseInt(a.id).toString(16).replace(/\D/g, ''))
+    - parseInt(parseInt(b.id).toString(16).replace(/\D/g, ''));
+  }
+
+  const [matchesN, setMatchesN] = useState(64)
+  const filteredMatches = matches.filter(filterChar1).filter(filterChar2)
+  const shuffledMatches = filteredMatches.sort(shuffle)
+  const slicedMatches = shuffledMatches.slice(0, matchesN)
 
   return (
     <Container>
@@ -87,10 +97,20 @@ function MatchesList() {
           <FilterMatches reloadFilterChar1={reloadFilterChar1} reloadFilterChar2={reloadFilterChar2} />
         </Col>
         <Col md={10}>
-          {slicedMathces.filter(filterChar1).filter(filterChar2).map((match) => (
-            <MatchesListItem match={match}/>
-          ))}
-          <Button onClick={() => setMatchesN(matchesN+16)}>Load More</Button>
+          <div className='match-list__vh custom-scrollbar'>
+            {slicedMatches.map((match) => (
+              <MatchesListItem match={match}/>
+            ))}
+            {filteredMatches.length !== slicedMatches.length&&(
+              <div className='list-load-more d-flex justify-content-center'
+              onClick={() => setMatchesN(matchesN+32)} >
+                <div className='d-block text-center'>
+                  <b className='ardela'>Load More</b><br />
+                  <BsChevronCompactDown className="load-more__icon" />
+                </div>
+              </div>
+            )}
+          </div>
         </Col>
       </Row>
     </Container>

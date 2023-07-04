@@ -132,9 +132,18 @@ function MatchComponent() {
               )}
             </div>
           </Col>
+
           <Col md={4}>
-            <MatchesSide />
+            {match.games&&(match.games.game1&&(
+              <MatchesSide 
+                videoUrl={match.videoUrl} tournament_id={match.tournament_id}
+                current_start_time={((parseInt(match.start_h)*3600) + (parseInt(match.start_m)*60) + parseInt(match.start_s))}
+                currentChar1={match.games.game1.charP1} currentChar2={match.games.game1.charP2}
+              />
+              )
+            )}
           </Col>
+
         </Row>
       </Container>
     );

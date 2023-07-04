@@ -28,7 +28,7 @@ function MatchesListItemTourney({id}) {
       <div className='px-2 mb-2 d-flex align-items-center tourney-title-border'
       style={(serie.color2 === "") ? ({backgroundColor: serie.color}) : ({backgroundImage: `linear-gradient(to right, ${serie.color}, ${serie.color2})`})}>
         <Image className='toruney-img mr-1' src={serie.img} />
-        <h5 className='tourney-title mb-0 txt-shadow ' style={{color: serie.txtColor}}>{tournament.name}</h5>
+        <b className='tourney-title mb-0' style={{color: serie.txtColor}}>{tournament.name}</b>
       </div>
     )
   }

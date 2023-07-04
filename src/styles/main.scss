@@ -4,6 +4,7 @@
 @import './tournament';
 @import './stats';
 @import './menu';
+@import './filter';
 
 .ardela {
   font-family: 'Ardela Edge', sans-serif;
@@ -61,4 +62,8 @@
 
 #react-select-2-listbox, #react-select-3-listbox{
   z-index: 3!important;
+}
+
+.Selector{
+  color: black!important;
 }

@@ -181,4 +181,33 @@
 
 .match-game-item-title {
   z-index: 2;
-} 
+}
+.list-load-more{
+  transition: 500ms;
+}
+.list-load-more:hover{
+  transition: 500ms;
+  background-image: radial-gradient(lighten($black, 5), rgba(black,0));
+  cursor: pointer;
+  color: $blue;
+}
+
+.load-more__icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  margin-top: -1rem;
+}
+
+.match-list__vh {
+  max-height: 86vh;
+  border: 0.2rem solid black;
+  border-radius: 0.25rem;
+}
+
+.loading-matches__div {
+  min-height: 80vh;
+  border: 0.2rem solid black;
+  border-radius: 0.25rem;
+  display: flex;
+  margin: 0 auto;
+}

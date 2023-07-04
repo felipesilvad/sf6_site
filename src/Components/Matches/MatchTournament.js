@@ -11,11 +11,9 @@ function MatchTournament({id}) {
     });
   }, [id]);
   
-  if (tournament) {
-    return (
-      tournament.name
-    )
-  }
+  return (
+    tournament&&(tournament.name)
+  )
 }
 
 export default MatchTournament;

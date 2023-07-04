@@ -1,0 +1,82 @@
+.char-filter__img {
+  width: 9rem!important;
+  object-fit: contain!important;
+  margin-left: -1.5rem;
+  margin-top: -0.4rem;
+  border: 1px solid #2c3034!important;
+}
+
+.char-filter__img-div{
+  width: 2.8rem!important;
+  height: 2rem;
+  padding: 0!important;
+  overflow: hidden;
+  border-radius: 0.2rem;
+}
+
+.filter__bg {
+  background-color: $lighter;
+  border-radius: 0.25rem;
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.filter__bg_current:hover {
+  background-color: $blue;
+  transition: 300ms;
+}
+
+.filter__more-txt {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: bolder;
+  font-style: italic;
+  margin-top: -0.5rem!important;
+}
+.filter__more-bg {
+  border: 0.1rem solid black;
+  border-radius: 0.2rem;
+  width: 50%;
+}
+
+.filter-select {
+  background-color: darken(white, 5);
+  border-radius: 0.2rem;
+}
+
+.add-filter-button {
+  background-color: $blue!important;
+  border-radius: 0.2rem 0 0 0.2rem!important;
+  border: none!important;
+  font-size: 1rem;
+  font-weight: 500!important;
+}
+
+.filter-options-x {
+  border-radius: 0.2rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  margin-right: 0.2rem;
+}
+.filter-options-x:hover {
+  background-color: gray;
+}
+.x__margin {
+  margin-top: -0.07rem;
+}
+
+.cntrl-select {
+  background-color: $light;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  margin-right: 0.2rem;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.cntrl-select__img{
+  width: 2rem;
+}
+.cntrl-select-active{
+  opacity: 1;
+  background-color: $lighter;
+}
