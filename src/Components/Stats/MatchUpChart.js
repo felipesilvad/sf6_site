@@ -4,6 +4,7 @@ import { query, collection, onSnapshot} from 'firebase/firestore';
 import {Container,Image,Table} from 'react-bootstrap';
 import MatchUpChartRow from './MatchUpChartRow'
 import MatchUpChartRowTotal from './MatchUpChartRowTotal'
+import StatsNav from './StatsNav';
 
 const MatchUpChart = () => {
   const [games,setGames] = useState([]);
@@ -31,6 +32,7 @@ const MatchUpChart = () => {
 
   return (
     <Container>
+      <StatsNav />
       <Table  striped bordered hover variant="dark" className='chart-table'>
         <tbody>
           <tr className='border-top-none fixed-table-img-top'>

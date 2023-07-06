@@ -39,7 +39,7 @@
   overflow-x: auto;
   white-space: nowrap;
   vertical-align: initial!important;
-  height: 90vh;
+  height: 80vh;
 }
 
 .chart-table::-webkit-scrollbar {
@@ -120,3 +120,25 @@
   border-color: var(--bs-table-border-color);
 }
 
+.show-button {
+  padding: 0.2rem 1rem;
+  border-radius: 0.25rem;
+  border: 0.1rem solid $blue;
+  cursor: pointer;
+}
+
+.show-button:hover {
+  background-color: rgba($blue,0.6);
+}
+
+.show-button_active {
+  background-color: $blue;
+}
+
+.recharts-negative-m {
+  margin-left: -2.5rem;
+}
+
+.stats-nav-active, .stats-nav-active:hover{
+  color: black!important;
+}

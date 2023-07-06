@@ -10,7 +10,7 @@ function MatchesListItem({match}) {
   const uniqCharP2 = [...new Set(allCharP2)];
 
   return (
-    <Link key={match.id} to={`/sets/${match.id}`}>
+    <Link key={match.id} to={`/vods/${match.id}`}>
       <div key={match.id} className='match-item__bg my-1'>
         <MatchesListItemTourney id={String(match.tournament_id)} />
         <div className='match_phase ardela'>
