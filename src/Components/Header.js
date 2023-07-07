@@ -6,6 +6,7 @@ import {Image} from 'react-bootstrap';
 import {IoIosStats} from 'react-icons/io'
 import {BiSolidVideos} from 'react-icons/bi'
 import {AiFillTrophy} from 'react-icons/ai'
+import logo from '../Assets/img/logo.png'
 
 function HeaderComponent() {
   const navDropdownTitle = (<>STATS <IoIosStats /></>);
@@ -13,7 +14,9 @@ function HeaderComponent() {
   return (
     <Navbar className='navbar-dark' bg="dark" expand="lg" fixed="top">
       <Container>
-        <Navbar.Brand href="/">Logo and stuff</Navbar.Brand>
+        <Navbar.Brand href="/">
+          <Image className='main-logo' src={logo} />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
