@@ -5,6 +5,7 @@
 @import './stats';
 @import './menu';
 @import './filter';
+@import './players';
 
 .ardela {
   font-family: 'Ardela Edge', sans-serif;
@@ -66,4 +67,8 @@
 
 .Selector{
   color: black!important;
+}
+
+.btn-close {
+  color: white!important;
 }

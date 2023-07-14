@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import db from '../../firebase';
 import { query, collection, onSnapshot} from 'firebase/firestore';
-import { Container,Table } from 'react-bootstrap';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Container } from 'react-bootstrap';
 import StatsNav from './StatsNav';
-import CharUsageRow from './CharUsageRow';
 
 function CharUsage() {
   const [games,setGames] = useState([]);
@@ -84,7 +84,7 @@ function CharUsage() {
   const dataTest =  []
   
   chars.map((char) => (
-    dataTest.push({name: char.title, id: char.id,
+    dataTest.push({name: char.title,
     Players: getPlayerGames(char.id),
     Games: 
       games.filter(filterEmptyGames).filter(game => game.charP1 === char.id).length
@@ -93,17 +93,6 @@ function CharUsage() {
     ,color: char.color
     })
   ))
-
-  const getPlayersPercent = (charPlayers) => {
-    const totalPlayers = dataTest.reduce((a, b) => +a + +b.Players, 0)
-    return ((charPlayers/totalPlayers)*100).toFixed(2)
-  }
-
-  const getGamesPercent = (charGames) => {
-    const totalGames = dataTest.reduce((a, b) => +a + +b.Games, 0)
-    return ((charGames/totalGames)*100).toFixed(2)
-  }
-
 
   function order( a, b ) {
     if (orderBy === 'players') {
@@ -151,15 +140,39 @@ function CharUsage() {
            <div className={`show-button ardela mx-2 ${showGames&&('show-button_active')}`}
            onClick={() => handleShowGames()}>Games</div>
         </div>
-        <Table  striped bordered hover variant="dark">
-          <tbody>
-            {dataTest.sort(order).map((data, index)=> (
-              <CharUsageRow name={data.name} id={data.id} orderBy={orderBy} index={index}
-              playersWR={getPlayersPercent(data.Players)} gamesWR={getGamesPercent(data.Games)}  />
-            ))}
-          </tbody>
-        </Table>
-        
+        <ResponsiveContainer className="recharts-negative-m"  width={'103%'} height={500}>
+          <BarChart
+            width={500}
+            height={300}
+            data={dataTest.sort(order)}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            {/* <Legend /> */}
+            {showPlayers&&(
+              <Bar dataKey="Players" >
+                {dataTest.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Bar>
+            )}
+            {showGames&&(
+              <Bar dataKey="Games" >
+                {dataTest.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Bar>
+            )}
+          </BarChart>
+        </ResponsiveContainer>
       </Container>
     );
   }

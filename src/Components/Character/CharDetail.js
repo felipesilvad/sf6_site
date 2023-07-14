@@ -20,17 +20,22 @@ function CharComponent() {
   useEffect (() => {
     onSnapshot(query(collection(db, `/sets`)), (snapshot) => {
       snapshot.docs.map(doc => (
-        setGames(oldGames => [...oldGames,doc.data().games.game1,doc.data().games.game2,doc.data().games.game3,doc.data().games.game4,doc.data().games.game5] )
+        setGames(oldGames => [...oldGames,
+          doc.data().games.game1,doc.data().games.game2,doc.data().games.game3,doc.data().games.game4,doc.data().games.game5,
+          doc.data().games.game6,doc.data().games.game7,doc.data().games.game8,doc.data().games.game9,doc.data().games.game10
+        ])
       ))
     });
   }, [id])
   
   function filterGames(game) {
-    if (game.winner) {
-      if (game.charP1 === id || game.charP2 === id) {
-        return true
-      }
-    } else {return false}
+    if (game) {
+      if (game.winner) {
+        if (game.charP1 === id || game.charP2 === id) {
+          return true
+        }
+      } else {return false}
+    }
   }
 
   if (char) {

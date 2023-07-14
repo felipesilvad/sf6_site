@@ -40,6 +40,7 @@
   white-space: nowrap;
   vertical-align: initial!important;
   height: 80vh;
+  --bs-table-striped-bg:  $blue!important;;
 }
 
 .chart-table::-webkit-scrollbar {
@@ -110,7 +111,7 @@
   --bs-table-color: #fff;
   --bs-table-bg: #212529;
   --bs-table-border-color: #373b3e;
-  --bs-table-striped-bg: $blue!important;
+  --bs-table-striped-bg: #212529;
   --bs-table-striped-color: #fff;
   --bs-table-active-bg: #373b3e;
   --bs-table-active-color: #fff;
@@ -141,4 +142,24 @@
 
 .stats-nav-active, .stats-nav-active:hover{
   color: black!important;
+}
+
+.usage__td {
+  padding: 0!important;
+  width: 100%;
+}
+
+.usage__progress {
+  --bs-progress-font-size: 1.75rem!important;
+  border-radius: 0!important;
+  height: 3rem!important;
+}
+
+.bg-odd {
+  background-color: #212529!important;
+  --bs-progress-bar-bg: #0f87b6!important;
+}
+.bg-even {
+  background-color: #373b3e!important;
+  --bs-progress-bar-bg: #00a2e2!important;
 }

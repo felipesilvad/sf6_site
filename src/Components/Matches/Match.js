@@ -46,16 +46,37 @@ function MatchComponent() {
     var game_3_s = null
     var game_4_s = null
     var game_5_s = null
-
-    if (match.games.game3.timestamp) {
+    var game_6_s = null
+    var game_7_s = null
+    var game_8_s = null
+    var game_9_s = null
+    var game_10_s = null
+    
+    if (match.games.game3) { if (Object.keys(match.games.game3).length !== 0) {
       game_3_s = getTimeStamp(match.games.game3.timestamp)
-    }
-    if (match.games.game4.timestamp) {
+    }}
+    if (match.games.game4) { if (Object.keys(match.games.game4).length !== 0) {
       game_4_s = getTimeStamp(match.games.game4.timestamp)
-    }
-    if (match.games.game5.timestamp) {
+    }}
+    if (match.games.game5) { if (Object.keys(match.games.game5).length !== 0) {
       game_5_s = getTimeStamp(match.games.game5.timestamp)
-    }
+    }}
+    if (match.games.game6) { if (Object.keys(match.games.game6).length !== 0) {
+      game_6_s = getTimeStamp(match.games.game6.timestamp)
+    }}
+    if (match.games.game7) { if (Object.keys(match.games.game7).length !== 0) {
+      game_7_s = getTimeStamp(match.games.game7.timestamp)
+    }}
+    if (match.games.game8) { if (Object.keys(match.games.game8).length !== 0) {
+      game_8_s = getTimeStamp(match.games.game8.timestamp)
+    }}
+    if (match.games.game9) { if (Object.keys(match.games.game9).length !== 0) {
+      game_9_s = getTimeStamp(match.games.game9.timestamp)
+    }}
+    if (match.games.game10) { if (Object.keys(match.games.game10).length !== 0) {
+      game_10_s = getTimeStamp(match.games.game10.timestamp)
+    }}
+
     if (game_1_s < played && game_2_s > played) {
       return 1
     }
@@ -124,6 +145,11 @@ function MatchComponent() {
                   <MatchGame getActiveGame={getActiveGame} sw={match.switch} game={match.games.game3} game_n={3} handleTime={handleTime} getTimeStamp={getTimeStamp} />
                   <MatchGame getActiveGame={getActiveGame} sw={match.switch} game={match.games.game4} game_n={4} handleTime={handleTime} getTimeStamp={getTimeStamp} />
                   <MatchGame getActiveGame={getActiveGame} sw={match.switch} game={match.games.game5} game_n={5} handleTime={handleTime} getTimeStamp={getTimeStamp} />
+                  <MatchGame getActiveGame={getActiveGame} sw={match.switch} game={match.games.game6} game_n={6} handleTime={handleTime} getTimeStamp={getTimeStamp} />
+                  <MatchGame getActiveGame={getActiveGame} sw={match.switch} game={match.games.game7} game_n={7} handleTime={handleTime} getTimeStamp={getTimeStamp} />
+                  <MatchGame getActiveGame={getActiveGame} sw={match.switch} game={match.games.game8} game_n={8} handleTime={handleTime} getTimeStamp={getTimeStamp} />
+                  <MatchGame getActiveGame={getActiveGame} sw={match.switch} game={match.games.game9} game_n={9} handleTime={handleTime} getTimeStamp={getTimeStamp} />
+                  <MatchGame getActiveGame={getActiveGame} sw={match.switch} game={match.games.game10} game_n={10} handleTime={handleTime} getTimeStamp={getTimeStamp} />
                 </>
               )}
             </div>

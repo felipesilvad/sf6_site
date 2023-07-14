@@ -9,6 +9,7 @@ import MatchUpChart from './Components/Stats/MatchUpChart';
 import CharDetail from './Components/Character/CharDetail';
 import HomeComponent from './Components/Home';
 import CharUsage from './Components/Stats/CharUsage';
+import PlayersComponent from './Components/Players/PlayersComponent';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/stats/matchup-chart' element={<MatchUpChart />} exact/>
         <Route path='/stats/chars-usage' element={<CharUsage />} exact/>
         <Route path='/chars/:id' element={<CharDetail />} exact/>
+        <Route path='/players' element={<PlayersComponent />} exact/>
       </Routes>
     </div>
   );

@@ -55,7 +55,10 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
         (!! match.games.game4 &&(match.games.game4.charP1 === char2 && match.games.game4.charP2 === char2)) ||
         (!! match.games.game5 &&(match.games.game5.charP1 === char2 && match.games.game5.charP2 === char2)) ||
         (!! match.games.game6 &&(match.games.game6.charP1 === char2 && match.games.game6.charP2 === char2)) ||
-        (!! match.games.game7 &&(match.games.game7.charP1 === char2 && match.games.game7.charP2 === char2))
+        (!! match.games.game7 &&(match.games.game7.charP1 === char2 && match.games.game7.charP2 === char2)) ||
+        (!! match.games.game8 &&(match.games.game8.charP1 === char2 && match.games.game8.charP2 === char2)) ||
+        (!! match.games.game9 &&(match.games.game9.charP1 === char2 && match.games.game9.charP2 === char2)) ||
+        (!! match.games.game10 &&(match.games.game10.charP1 === char2 && match.games.game10.charP2 === char2))
       } else {
         return  (match.games.game1.charP1 === char1 || match.games.game1.charP2 === char1) ||
         (!! match.games.game2 &&(match.games.game2.charP1 === char1 || match.games.game2.charP2 === char1)) ||
@@ -63,7 +66,10 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
         (!! match.games.game4 &&(match.games.game4.charP1 === char1 || match.games.game4.charP2 === char1)) ||
         (!! match.games.game5 &&(match.games.game5.charP1 === char1 || match.games.game5.charP2 === char1)) ||
         (!! match.games.game6 &&(match.games.game6.charP1 === char1 || match.games.game6.charP2 === char1)) ||
-        (!! match.games.game7 &&(match.games.game7.charP1 === char1 || match.games.game7.charP2 === char1))
+        (!! match.games.game7 &&(match.games.game7.charP1 === char1 || match.games.game7.charP2 === char1)) ||
+        (!! match.games.game8 &&(match.games.game8.charP1 === char1 || match.games.game8.charP2 === char1)) ||
+        (!! match.games.game9 &&(match.games.game9.charP1 === char1 || match.games.game9.charP2 === char1)) ||
+        (!! match.games.game10 &&(match.games.game10.charP1 === char1 || match.games.game10.charP2 === char1))
       }
     }
   }
@@ -87,7 +93,10 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
         (!! match.games.game4 &&(match.games.game4.charP1 === char2 && match.games.game4.charP2 === char2)) ||
         (!! match.games.game5 &&(match.games.game5.charP1 === char2 && match.games.game5.charP2 === char2)) ||
         (!! match.games.game6 &&(match.games.game6.charP1 === char2 && match.games.game6.charP2 === char2)) ||
-        (!! match.games.game7 &&(match.games.game7.charP1 === char2 && match.games.game7.charP2 === char2))
+        (!! match.games.game7 &&(match.games.game7.charP1 === char2 && match.games.game7.charP2 === char2)) ||
+        (!! match.games.game8 &&(match.games.game8.charP1 === char2 && match.games.game8.charP2 === char2)) ||
+        (!! match.games.game9 &&(match.games.game9.charP1 === char2 && match.games.game9.charP2 === char2)) ||
+        (!! match.games.game10 &&(match.games.game10.charP1 === char2 && match.games.game10.charP2 === char2))
       } else {
         return (match.games.game1.charP1 === char2 || match.games.game1.charP2 === char2) ||
         (!! match.games.game2 &&(match.games.game2.charP1 === char2 || match.games.game2.charP2 === char2)) ||
@@ -95,7 +104,10 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
         (!! match.games.game4 &&(match.games.game4.charP1 === char2 || match.games.game4.charP2 === char2)) ||
         (!! match.games.game5 &&(match.games.game5.charP1 === char2 || match.games.game5.charP2 === char2)) ||
         (!! match.games.game6 &&(match.games.game6.charP1 === char2 || match.games.game6.charP2 === char2)) ||
-        (!! match.games.game7 &&(match.games.game7.charP1 === char2 || match.games.game7.charP2 === char2))
+        (!! match.games.game7 &&(match.games.game7.charP1 === char2 || match.games.game7.charP2 === char2)) ||
+        (!! match.games.game8 &&(match.games.game8.charP1 === char2 || match.games.game8.charP2 === char2)) ||
+        (!! match.games.game9 &&(match.games.game9.charP1 === char2 || match.games.game9.charP2 === char2)) ||
+        (!! match.games.game10 &&(match.games.game10.charP1 === char2 || match.games.game10.charP2 === char2))
       }
     }
   }
@@ -118,7 +130,10 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
       (!! match.games.game4 &&(match.games.game4.cP1 === cntrl1)) ||
       (!! match.games.game5 &&(match.games.game5.cP1 === cntrl1)) ||
       (!! match.games.game6 &&(match.games.game6.cP1 === cntrl1)) ||
-      (!! match.games.game7 &&(match.games.game7.cP1 === cntrl1))
+      (!! match.games.game7 &&(match.games.game7.cP1 === cntrl1)) ||
+      (!! match.games.game8 &&(match.games.game8.cP1 === cntrl1)) ||
+      (!! match.games.game9 &&(match.games.game9.cP1 === cntrl1)) ||
+      (!! match.games.game10 &&(match.games.game10.cP1 === cntrl1))
     }
   }
 
@@ -140,7 +155,10 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
       (!! match.games.game4 &&(match.games.game4.cP2 === cntrl2)) ||
       (!! match.games.game5 &&(match.games.game5.cP2 === cntrl2)) ||
       (!! match.games.game6 &&(match.games.game6.cP2 === cntrl2)) ||
-      (!! match.games.game7 &&(match.games.game7.cP2 === cntrl2))
+      (!! match.games.game7 &&(match.games.game7.cP2 === cntrl2)) ||
+      (!! match.games.game8 &&(match.games.game8.cP2 === cntrl2)) ||
+      (!! match.games.game9 &&(match.games.game9.cP2 === cntrl2)) ||
+      (!! match.games.game10 &&(match.games.game10.cP2 === cntrl2))
     }
   }
   
