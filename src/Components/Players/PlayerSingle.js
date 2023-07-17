@@ -6,26 +6,27 @@ import {countries} from '../../data.ts'
 import ReactCountryFlag from "react-country-flag"
 import PlayerSingleChar from './PlayerSingleChar';
 
-const httpLink = new HttpLink({ uri: 'https://api.start.gg/gql/alpha' });
-  const authLink = new ApolloLink((operation, forward) => {
-    operation.setContext(({ headers }) => ({ headers: {
-      authorization: "Bearer 80593c014450f43b6c9328f668170c95"
-    }}));
-    return forward(operation);
-  });
-  const client = new ApolloClient({
-    cache: new InMemoryCache(),
-    link: authLink.concat(httpLink)
-  });
+// const httpLink = new HttpLink({ uri: 'https://api.start.gg/gql/alpha' });
+// const authLink = new ApolloLink((operation, forward) => {
+//   operation.setContext(({ headers }) => ({ headers: {
+//     authorization: "Bearer 80593c014450f43b6c9328f668170c95"
+//   }}));
+//   return forward(operation);
+// });
+// const client = new ApolloClient({
+//   cache: new InMemoryCache(),
+//   link: authLink.concat(httpLink)
+// });
 
-function PlayersSingle({slug, chars, matches}) {
-  const [user, setUser] = useState([])
+function PlayersSingle({slug, gamesP1, gamesP2}) {
   const [player, setPlayer] = useState([])
 
   useEffect(() => {
-    onSnapshot(doc(db, "/players/", String(slug)), (doc) => {
-      setPlayer(doc.data());
-    });
+    if (String(slug)) {
+      onSnapshot(doc(db, "/players/", String(slug)), (doc) => {
+        setPlayer(doc.data());
+      });
+    }
   }, [slug]);
 
   const getFlagCode = (txt) => {
@@ -66,8 +67,6 @@ function PlayersSingle({slug, chars, matches}) {
 
   // })
 
-  console.log(matches)
-
   return (
     <div className='p-single__bg'>
       {player&&(
@@ -86,7 +85,8 @@ function PlayersSingle({slug, chars, matches}) {
           {player.state&&(
             <label>State: {player.state}</label>
           )}
-          <PlayerSingleChar chars={chars} matches={matches} player_id={slug.slug} />
+          <PlayerSingleChar player_id={String(slug)}
+          gamesP1={gamesP1} gamesP2={gamesP2}  />
         </>
       )}
     </div>

@@ -10,6 +10,7 @@ import CharDetail from './Components/Character/CharDetail';
 import HomeComponent from './Components/Home';
 import CharUsage from './Components/Stats/CharUsage';
 import PlayersComponent from './Components/Players/PlayersComponent';
+import FooterComponent from './Components/Footer';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/chars/:id' element={<CharDetail />} exact/>
         <Route path='/players' element={<PlayersComponent />} exact/>
       </Routes>
+      <FooterComponent />
     </div>
   );
 }

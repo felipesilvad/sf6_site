@@ -63,3 +63,23 @@
 .main-logo {
   width: 8rem;
 }
+
+.footer-bg {
+  background-color: darken($dark,2);
+}
+
+.Social-Link{
+  color: $blue;
+  width: 2em;
+  height: 2em;
+}
+
+.Social-Link-yt{
+  color: $red;
+  width: 2em;
+  height: 2em;
+}
+
+.text-red{
+  color: $red;
+}

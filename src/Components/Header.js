@@ -6,6 +6,7 @@ import {Image} from 'react-bootstrap';
 import {IoIosStats} from 'react-icons/io'
 import {BiSolidVideos} from 'react-icons/bi'
 import {AiFillTrophy} from 'react-icons/ai'
+import {GiTabletopPlayers} from 'react-icons/gi'
 import logo from '../Assets/img/logo.png'
 
 function HeaderComponent() {
@@ -25,6 +26,7 @@ function HeaderComponent() {
               <NavDropdown.Item className='menu-button' href="/stats/matchup-chart">Matchup Chart</NavDropdown.Item>
               <NavDropdown.Item className='menu-button' href="/stats/chars-usage">Character Usage</NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link className='ardela menu-button' href="/players">Players <GiTabletopPlayers /></Nav.Link>
             <Nav.Link className='ardela menu-button text-muted' href="/tournaments" disabled>Tournaments <AiFillTrophy /></Nav.Link>
           </Nav>
         </Navbar.Collapse>
