@@ -14,6 +14,7 @@ function MatchComponent() {
   const [match, setMatch] = useState([])
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     onSnapshot(doc(db, "/sets/", id), (doc) => {
       setMatch(doc.data());
     });
