@@ -104,7 +104,7 @@ function PlayersComponent() {
   }, [selectedPlayer2])
 
   return (
-    <Container>
+    <Container className='player-min-h'>
       <Row>
         <Col>
           <h5 className='ardela txt-shadow mt-1 text-center'>Player 1</h5>

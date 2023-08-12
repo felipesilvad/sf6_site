@@ -1,46 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import { query, collection, onSnapshot } from 'firebase/firestore';
+import { query, collection, onSnapshot, orderBy, limit} from 'firebase/firestore';
+import {FieldPath, where} from 'firebase/firestore'
 import db from '../firebase';
-import { useNavigate } from "react-router-dom";
+import {Col, Container, Row} from 'react-bootstrap'; 
+import MatchesListItem from './Matches/MatchesListItem';
+import TournamentListItem from './Tournaments/TournamentListItem';
 
 function HomeComponent() {
   const [matches, setMatches] = useState([])
-
-  function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
-  
-    // While there remain elements to shuffle.
-    while (currentIndex !== 0) {
-  
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-  
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
-    }
-  
-    return array;
-  }
-  const navigate = useNavigate();
+  const [tournaments, setTournaments] = useState([])
 
   useEffect (() => {
-    onSnapshot(query(collection(db, `/sets`)), (snapshot) => {
-      setMatches(snapshot.docs.map(doc => (doc.id)))
+    onSnapshot(query(collection(db, `/tournaments`), limit(13), orderBy("startAt", "desc")), (snapshot) => {
+      setTournaments(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
     });
   }, [])
-
   useEffect (() => {
-    if (shuffle(matches)[0]) {
-      navigate(`/vods/${shuffle(matches)[0]}`)
+    if (tournaments[0]) {
+      onSnapshot(query(collection(db, `/sets`), where("tournament_id", "==", parseInt(tournaments[0].id))), (snapshot) => {
+        setMatches(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
+      })
     }
-  }, [matches, navigate])
-
+  }, [tournaments])
 
   if (matches) {
     return (
-      <></>
+      <Container className='player-min-h'>
+        <Row className='mt-1'>
+          <Col>
+            <div className='ardela text-center'><h5><b>Latest Matches</b></h5></div>
+            {matches.sort((a, b) => (a.id > b.id ? -1 : 1)).slice(0, 5).map((match) => (
+              <MatchesListItem match={match} />
+            ))}
+          </Col>
+          <Col>
+            <div className='ardela text-center'><h5><b>Latest Tournaments</b></h5></div>
+            {tournaments.map((tournament) => (
+              <TournamentListItem tournament={tournament} />
+            ))}
+          </Col>
+        </Row>
+        
+      </Container>
     )
   }
 }

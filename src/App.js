@@ -11,6 +11,7 @@ import HomeComponent from './Components/Home';
 import CharUsage from './Components/Stats/CharUsage';
 import PlayersComponent from './Components/Players/PlayersComponent';
 import FooterComponent from './Components/Footer';
+import VodsComponent from './Components/Vods';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
       <HeaderComponent />
       <Routes>
         <Route path='/' element={<HomeComponent />} exact/>
-        <Route path='/vods' element={<HomeComponent />} exact/>
+        <Route path='/vods' element={<VodsComponent />} exact/>
         <Route path='/vods/:id' element={<MatchComponent />} exact/>
         <Route path='/tournaments' element={<TournamentsList />} exact/>
         <Route path='/tournaments/:id' element={<TournamentComponent />} exact/>

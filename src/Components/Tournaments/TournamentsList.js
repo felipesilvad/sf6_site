@@ -1,34 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { query, collection, onSnapshot } from 'firebase/firestore';
+import { query, collection, onSnapshot , orderBy} from 'firebase/firestore';
 import db from '../../firebase';
-import {Link} from 'react-router-dom';
-import { Row, Col, Container} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
+import TournamentListItem from '../Tournaments/TournamentListItem';
 
 function TournamentsList() {
   const [tournaments, setTournaments] = useState([])
   
   useEffect (() => {
-    onSnapshot(query(collection(db, `/tournaments`)), (snapshot) => {
+    onSnapshot(query(collection(db, `/tournaments`), orderBy("startAt", "desc")), (snapshot) => {
       setTournaments(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
     });
   }, [])
 
+
   return (
-    <Container>
-      {/* <h1>{data.user.name}</h1>
-      <p>{data.user.email}</p> */}
-      <Row>
-        <Col xs={2}>
-          search and stuff
-        </Col>
-        <Col xs={10}>
-          {tournaments.map((tournament) => (
-            <Link to={`/tournaments/${tournament.id}`}>
-              {tournament.name}
-            </Link>
-          ))}
-        </Col>
-      </Row>
+    <Container className='player-min-h'>
+      {tournaments.map((tournament) => (
+        <TournamentListItem tournament={tournament} />
+      ))}
     </Container>
 );
 }
