@@ -18,7 +18,7 @@ function App() {
     <div className='App'>
       <HeaderComponent />
       <Routes>
-        <Route path='/' element={<HomeComponent />} exact/>
+        <Route path='/' element={<MatchUpChart />} exact/>
         <Route path='/vods' element={<VodsComponent />} exact/>
         <Route path='/vods/:id' element={<MatchComponent />} exact/>
         <Route path='/tournaments' element={<TournamentsList />} exact/>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { query, collection, onSnapshot } from 'firebase/firestore';
+import { query, collection, onSnapshot, limit, where} from 'firebase/firestore';
 import db from '../../firebase';
 import MatchesListItem from './MatchesListItem';
 import {BsChevronCompactDown} from 'react-icons/bs'
@@ -7,17 +7,31 @@ import MatchesSideFilterHead from './MatchesSideFilterHead';
 import FilterSelected from '../Filter/FilterSelected';
 import FilterSelectModal from '../Filter/FilterSelectModal';
 
-function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,currentChar2}) {
+function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,currentChar2,id}) {
   const [matches, setMatches] = useState([])
   const [loading, setLoading] = useState(true)
+  const [matchesN, setMatchesN] = useState(32)
+  var queryMatches = []
 
   useEffect (() => {
-    onSnapshot(query(collection(db, `/sets`)), (snapshot) => {
-      setMatches(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
-    });
-    setLoading(false)
-  }, [])
+    queryMatches = []
+  }, [id])
 
+  useEffect (() => {
+    onSnapshot(query(collection(db, `/sets`), where("tournament_id","==",tournament_id), limit(matchesN)), (snapshot) => {
+      snapshot.docs.map(doc => (queryMatches.push({...doc.data(), id: doc.id})))
+    });
+    onSnapshot(query(collection(db, `/sets`), where("games.game1.charP1","==",currentChar1), limit(matchesN)), (snapshot) => {
+      snapshot.docs.map(doc => (queryMatches.push({...doc.data(), id: doc.id})))
+    });
+    onSnapshot(query(collection(db, `/sets`), where("games.game1.charP2","==",currentChar2), limit(matchesN)), (snapshot) => {
+      snapshot.docs.map(doc => (queryMatches.push({...doc.data(), id: doc.id})))
+    });
+    setMatches(queryMatches)
+    setLoading(false)
+  }, [matchesN])
+
+  
 
   // LOADING
   function sleep(ms) {
@@ -256,13 +270,17 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
     }
   }
 
-  const [matchesN, setMatchesN] = useState(64)
   const filteredMatches = matches.filter(filterChar1).filter(filterChar2).filter(filterCntrl1).filter(filterCntrl2).filter(filterPlayer1).filter(filterPlayer2).filter(filterTourney)
   const nextMatches = filteredMatches.filter(nextMatchesFilter).sort(orderSecs)
   const shuffledMatches = nextMatches
         .concat(filteredMatches.filter(sameTourneyMatches))
         .concat(filteredMatches.filter(otherMatches).sort(shuffle))
-  const slicedMatches = shuffledMatches.slice(0, matchesN)
+  // const slicedMatches = shuffledMatches.slice(0, matchesN)
+  function removeDuplicates(arr) {
+    return arr.filter((item,
+        index) => arr.indexOf(item) === index);
+  }
+  const uniqMatches = removeDuplicates(matches)
 
   return (
     <>
@@ -289,11 +307,11 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
         </div>
       ) : (
         <div className='match-list__vh custom-scrollbar'>
-          {slicedMatches.map((match) => (
+          {uniqMatches.map((match) => (
             <MatchesListItem match={match} />
           ))}
 
-          {shuffledMatches.length !== slicedMatches.length&&(
+          {/* {shuffledMatches.length !== matches.length&&( */}
             <div className='list-load-more d-flex justify-content-center'
             onClick={() => setMatchesN(matchesN+32)} >
               <div className='d-block text-center'>
@@ -301,7 +319,7 @@ function MatchesSide({videoUrl,tournament_id, current_start_time,currentChar1,cu
                 <BsChevronCompactDown className="load-more__icon" />
               </div>
             </div>
-          )}
+          {/* )} */}
         </div>
       )}
 

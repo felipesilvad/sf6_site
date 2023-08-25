@@ -8,7 +8,7 @@ function FooterComponent() {
     <footer className="page-footer font-small blue pt-4 footer-bg">
       <div className="container-fluid text-center text-md-left">
         <div className="row">
-          <div className="col-md-4 mt-md-0 mt-3">
+          {/* <div className="col-md-4 mt-md-0 mt-3">
             <h5 className="text-uppercase ardela">WIP</h5>
             <p>Website still in Work in Progress</p>
           </div>
@@ -24,7 +24,7 @@ function FooterComponent() {
               <li>Character Specific Page</li>
               <li>Show Results Option on Player VS Player VOD List</li>
             </ul>
-          </div>
+          </div> */}
 
           <div className="col-md-3 mb-md-0 mb-3">
             <div className="d-flex justify-content-center">

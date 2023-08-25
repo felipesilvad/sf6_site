@@ -38,9 +38,7 @@ function MatchComponent() {
 
 
   // CURRENT TIME STUFF
-
   const [played, setPlayed] = useState(0);
-
   const getActiveGame = () => {
     var game_1_s = getTimeStamp(match.games.game1.timestamp)
     var game_2_s = getTimeStamp(match.games.game2.timestamp)
@@ -51,7 +49,6 @@ function MatchComponent() {
     var game_7_s = null
     var game_8_s = null
     var game_9_s = null
-    var game_10_s = null
     
     if (match.games.game3) { if (Object.keys(match.games.game3).length !== 0) {
       game_3_s = getTimeStamp(match.games.game3.timestamp)
@@ -74,40 +71,77 @@ function MatchComponent() {
     if (match.games.game9) { if (Object.keys(match.games.game9).length !== 0) {
       game_9_s = getTimeStamp(match.games.game9.timestamp)
     }}
-    if (match.games.game10) { if (Object.keys(match.games.game10).length !== 0) {
-      game_10_s = getTimeStamp(match.games.game10.timestamp)
-    }}
 
-    if (game_1_s < played && game_2_s > played) {
+    if (game_1_s <= played && game_2_s > played) {
       return 1
     }
     if (game_3_s) {
-      if (game_2_s < played && game_3_s > played) {
+      if (game_2_s <= played && game_3_s > played) {
         return 2
       } if (game_4_s) {
-        if (game_3_s < played && game_4_s > played) {
+        if (game_3_s <= played && game_4_s > played) {
           return 3
         }
         if (game_5_s) {
-          if (game_4_s < played && game_5_s > played) {
+          if (game_4_s <= played && game_5_s > played) {
             return 4
           } else {
-            if (game_5_s < played) {
-              return 5
+            if (game_6_s) {
+              if (game_5_s <= played && game_6_s > played) {
+                return 5
+              } else {
+                if (game_7_s) {
+                  if (game_6_s <= played && game_7_s > played) {
+                    return 6
+                  } else {
+                    if (game_8_s) {
+                      if (game_7_s <= played && game_8_s > played) {
+                        return 7
+                      } else {
+                        if (game_9_s) {
+                          if (game_8_s <= played && game_9_s > played) {
+                            return 8
+                          } else {
+                            if (game_9_s <= played) {
+                              return 9
+                            }
+                          }
+                        } else {
+                          if (game_8_s <= played) {
+                            return 8
+                          }
+                        }
+                      }
+                    } else {
+                      if (game_7_s <= played) {
+                        return 7
+                      }
+                    }
+                  }
+                } else {
+                  if (game_6_s <= played) {
+                    return 6
+                  }
+                }
+              }
+            } else {
+              if (game_5_s <= played) {
+                return 5
+              }
             }
           }
         } else {
-          if (game_4_s < played) {
+          if (game_4_s <= played) {
             return 4
           }
         }
       } else {
-        if (game_3_s < played) {
+        if (game_3_s <= played) {
           return 3
         }
       }
     } else {
-      if (game_2_s < played) {
+      if (game_2_s <= played) {
         return 2
       }
     }
@@ -159,7 +193,8 @@ function MatchComponent() {
           <Col md={4}>
             {match.games&&(match.games.game1&&(
               <MatchesSide 
-                videoUrl={match.videoUrl} tournament_id={match.tournament_id}
+                videoUrl={match.videoUrl} tournament_id={match.tournament_id} id={id}
+              
                 current_start_time={((parseInt(match.start_h)*3600) + (parseInt(match.start_m)*60) + parseInt(match.start_s))}
                 currentChar1={match.games.game1.charP1} currentChar2={match.games.game1.charP2}
               />
