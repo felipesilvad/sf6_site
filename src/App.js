@@ -12,13 +12,14 @@ import CharUsage from './Components/Stats/CharUsage';
 import PlayersComponent from './Components/Players/PlayersComponent';
 import FooterComponent from './Components/Footer';
 import VodsComponent from './Components/Vods';
+import AddCharUsage from './Components/Stats/AddCharUsage';
 
 function App() {
   return (
     <div className='App'>
       <HeaderComponent />
       <Routes>
-        <Route path='/' element={<MatchUpChart />} exact/>
+        <Route path='/' element={<HomeComponent />} exact/>
         <Route path='/vods' element={<VodsComponent />} exact/>
         <Route path='/vods/:id' element={<MatchComponent />} exact/>
         <Route path='/tournaments' element={<TournamentsList />} exact/>
@@ -28,6 +29,7 @@ function App() {
         <Route path='/stats/chars-usage' element={<CharUsage />} exact/>
         <Route path='/chars/:id' element={<CharDetail />} exact/>
         <Route path='/players' element={<PlayersComponent />} exact/>
+        <Route path='/addcharusage' element={<AddCharUsage />} exact />
       </Routes>
       <FooterComponent />
     </div>
