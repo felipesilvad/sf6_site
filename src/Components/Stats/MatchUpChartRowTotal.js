@@ -1,28 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import MatchUpChartTd from './MatchUpChartTd';
 
-const MatchUpChartRowTotal = ({char_id, games}) => {
-  const [charWinRate, setCharWinRate] = useState();
-  const [charWins, setCharWins] = useState();
-  const [charGames, setCharGames] = useState();
-
-  const getCharWinrate = (char) => {
-    const charWins = games.filter(games => 
-        games.winner === char
-      ).length
-    setCharWins(charWins)
-    const charLoses = games.filter(games => 
-        ((games.charP1 === char || games.charP2 === char) && games.winner !== char) ||
-        ((games.charP1 === char || games.charP2 === char) && games.charP1 === games.charP2)
-    ).length
-    setCharGames(charLoses+charWins)
-    return Math.round(((charWins/(charLoses+charWins))*100) * 100) / 100
-  }
-
-  useEffect (() => {
-    setCharWinRate(getCharWinrate(char_id))
-  }, [char_id])
-
+const MatchUpChartRowTotal = ({char_id, data}) => {
+  const charData = data[parseInt(char_id)-1]
+  
   if (charWinRate > 50) {
     return (
       <MatchUpChartTd charWinRate={charWinRate} charWins={charWins} charGames={charGames}

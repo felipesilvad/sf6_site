@@ -413,7 +413,7 @@ function AddCharUsage() {
         game.winner === char || game.winner === char ||
         game.winner === char
       ).length
-    return ((charWins/charFilteredGames.length)*100).toFixed(2)
+    return {winrate: ((charWins/charFilteredGames.length)*100).toFixed(2), wins: charWins, games:charFilteredGames.length}
   }
 
   const dataChars =  []

@@ -7,31 +7,20 @@ import MatchUpChartRowTotal from './MatchUpChartRowTotal'
 import StatsNav from './StatsNav';
 
 const MatchUpChart = () => {
-  const [games,setGames] = useState([]);
-
+  const [data, setData] = useState([])
   useEffect (() => {
-    onSnapshot(query(collection(db, `/sets`)), (snapshot) => {
-      snapshot.docs.map(doc => (
-        setGames(oldGames => [...oldGames,
-          doc.data().games.game1,doc.data().games.game2,doc.data().games.game3,doc.data().games.game4,doc.data().games.game5,
-          doc.data().games.game6,doc.data().games.game7,doc.data().games.game8,doc.data().games.game9,doc.data().games.game10
-        ])
-      ))
+    onSnapshot(query(collection(db, `/data/CharsData/CharsData/`)), (snapshot) => {
+      setData(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
     });
   }, [])
 
   const [chars, setChars] = useState([])
   useEffect (() => {
     onSnapshot(query(collection(db, `/chars`)), (snapshot) => {
-      setChars(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
+      setChars(snapshot.docs.map(doc => ({title: doc.data().title, id: doc.id, color:  doc.data().color})))
     });
   }, [])
 
-  function filterEmptyGames(game) {
-    if (game) { if (Object.keys(game).length !== 0) {
-      return true
-    } else {return false}} else {return false}
-  }
 
   return (
     <Container>
@@ -59,16 +48,16 @@ const MatchUpChart = () => {
                   {char.title}
                 </b>
               </td>
-              <MatchUpChartRowTotal char_id={char.id} games={games.filter(filterEmptyGames)} />
-              {!! chars &&(chars.map((char2) => (
+              <MatchUpChartRowTotal char_id={char.id} data={data} />
+              {/* {!! chars &&(chars.map((char2) => (
                 (char.id !== char2.id) ? (
-                  <MatchUpChartRow games={games.filter(filterEmptyGames)} char_id={char.id} char2_id={char2.id} />
+                  <MatchUpChartRow data={data} char_id={char.id} char2_id={char2.id} />
                 ) : (
                   <td className="p-0 text-center">
                     -
                   </td>
                 )
-              )))}
+              )))} */}
             </tr>
           ))}
           </tbody>
