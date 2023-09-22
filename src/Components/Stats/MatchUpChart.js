@@ -49,7 +49,7 @@ const MatchUpChart = () => {
                 </b>
               </td>
               <MatchUpChartRowTotal char_id={char.id} data={data} />
-              {/* {!! chars &&(chars.map((char2) => (
+              {!! chars &&(chars.map((char2) => (
                 (char.id !== char2.id) ? (
                   <MatchUpChartRow data={data} char_id={char.id} char2_id={char2.id} />
                 ) : (
@@ -57,7 +57,7 @@ const MatchUpChart = () => {
                     -
                   </td>
                 )
-              )))} */}
+              )))}
             </tr>
           ))}
           </tbody>

@@ -8,36 +8,21 @@ function CharComponent() {
   const id = useParams().id
   const [char, setChar] = useState([])
   const img = `https://firebasestorage.googleapis.com/v0/b/sf6-vods.appspot.com/o/Chars%2F${id}_.png?alt=media`
+  const [charData, setCharData] = useState([])
 
   useEffect(() => {
     onSnapshot(doc(db, "/chars/", id), (doc) => {
       setChar(doc.data());
     });
+    onSnapshot(doc(db, "/data/CharsData/CharsData/", id), (doc) => {
+      setCharData(doc.data());
+    });
+    onSnapshot(query(collection(db, `/data/PlayersData/PlayersData`)), (snapshot) => {
+      setMatches(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
+    })
   }, [id]);
 
-  const [games,setGames] = useState([]);
-
-  useEffect (() => {
-    onSnapshot(query(collection(db, `/sets`)), (snapshot) => {
-      snapshot.docs.map(doc => (
-        setGames(oldGames => [...oldGames,
-          doc.data().games.game1,doc.data().games.game2,doc.data().games.game3,doc.data().games.game4,doc.data().games.game5,
-          doc.data().games.game6,doc.data().games.game7,doc.data().games.game8,doc.data().games.game9,doc.data().games.game10
-        ])
-      ))
-    });
-  }, [id])
-  
-  function filterGames(game) {
-    if (game) {
-      if (game.winner) {
-        if (game.charP1 === id || game.charP2 === id) {
-          return true
-        }
-      } else {return false}
-    }
-  }
-
+  console.log(charData)
   if (char) {
     return (
       <Container className='match-container'>
@@ -45,7 +30,6 @@ function CharComponent() {
           <Image src={img} className={`match__char-img`} />
           <h2 className='ardela'>{char.title}</h2>
         </div>
-        {games.filter(filterGames).length}
       </Container>
     );
   }

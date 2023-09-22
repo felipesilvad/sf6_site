@@ -409,9 +409,17 @@ function AddCharUsage() {
       (game.charP1 === char2 || game.charP2 === char2)
     )
     const charWins = charFilteredGames.filter(game => 
-        game.winner === char || game.winner === char ||
-        game.winner === char || game.winner === char ||
         game.winner === char
+      ).length
+    return {winrate: ((charWins/charFilteredGames.length)*100).toFixed(2), wins: charWins, games:charFilteredGames.length}
+  }
+
+  const getFullWinrate = (char_id) => {
+    const charFilteredGames = games.filter(filterEmptyGames).filter(game => 
+      (game.charP1 === char_id && game.charP2 !== char_id) || (game.charP1 !== char_id && game.charP2 === char_id)
+    )
+    const charWins = charFilteredGames.filter(game => 
+        game.winner === char_id
       ).length
     return {winrate: ((charWins/charFilteredGames.length)*100).toFixed(2), wins: charWins, games:charFilteredGames.length}
   }
@@ -425,7 +433,9 @@ function AddCharUsage() {
       games.filter(filterEmptyGames).filter(game => game.charP1 === char.id).length
       +
       games.filter(filterEmptyGames).filter(game => game.charP2 === char.id).length
-    ,color: char.color,
+    ,wins: games.filter(filterEmptyGames).filter(game => game.winner === char.id).length,
+    full_winrate: getFullWinrate(char.id),
+    color: char.color,
     WinRate: chars.map((char_2) => (
       getCharWinrate(char.id,char_2.id)
     ))
@@ -437,6 +447,7 @@ function AddCharUsage() {
     playerChars.forEach(function(i) { count[i] = (count[i]||0) + 1;});
     return Math.round(((count[char]*100)/playerChars.length)* 100) / 100
   }
+
 
   const GetPlayerChar = (playerID) => {
     // Getting All games with Player
@@ -490,6 +501,8 @@ function AddCharUsage() {
         games: charData.Games,
         player: charData.Players,
         winrate: charData.WinRate,
+        full_winrate:charData.full_winrate,
+        wins:charData.wins,
         color: charData.color,
         id: charData.id,
         name: charData.name
@@ -506,7 +519,7 @@ function AddCharUsage() {
       totalPlayers:totalPlayers,
       totalGames: totalGames,
     });
-    
+    console.log("Data Added!")
   }
 
 
