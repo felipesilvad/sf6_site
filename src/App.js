@@ -13,6 +13,7 @@ import PlayersComponent from './Components/Players/PlayersComponent';
 import FooterComponent from './Components/Footer';
 import VodsComponent from './Components/Vods';
 import AddCharUsage from './Components/Stats/AddCharUsage';
+import PlayerSingle from './Components/Players/PlayerSingle';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path='/stats/chars-usage' element={<CharUsage />} exact/>
         <Route path='/chars/:id' element={<CharDetail />} exact/>
         <Route path='/players' element={<PlayersComponent />} exact/>
+        <Route path='/players/:id' element={<PlayerSingle />} exact/>
         <Route path='/addcharusage' element={<AddCharUsage />} exact />
       </Routes>
       <FooterComponent />

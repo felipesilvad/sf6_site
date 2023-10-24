@@ -93,7 +93,10 @@ function PlayersVsMatch({selectedPlayer1,selectedPlayer2,matches}) {
   }
 
   function filterVodPlayers(match) {
-    if ((match.Player1_id === selectedPlayer1 || match.Player2_id === selectedPlayer1)&&(match.Player1_id === selectedPlayer2 || match.Player2_id === selectedPlayer2)) {
+    // if ((match.Player1_id === selectedPlayer1 || match.Player2_id === selectedPlayer1)&&(match.Player1_id === selectedPlayer2 || match.Player2_id === selectedPlayer2)) {
+    //   return true
+    // }
+    if ((match.Player1_id === selectedPlayer1 || match.Player2_id === selectedPlayer1)) {
       return true
     }
   }
@@ -124,7 +127,7 @@ function PlayersVsMatch({selectedPlayer1,selectedPlayer2,matches}) {
     }
   }
   
-  if (selectedPlayer1.length>0&&selectedPlayer2.length>0) {
+  if (selectedPlayer1.length>0) {
     return (
       <Container>
         <hr className='mt-2' />

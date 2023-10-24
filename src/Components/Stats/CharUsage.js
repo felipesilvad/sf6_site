@@ -88,7 +88,6 @@ function CharUsage() {
             ))}
           </tbody>
         </Table>
-        
       </Container>
     );
   }

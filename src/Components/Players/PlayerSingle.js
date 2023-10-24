@@ -1,96 +1,59 @@
 import React, { useState, useEffect } from 'react';
-import { doc, onSnapshot, query, collection} from "firebase/firestore"; 
+import { query, collection, onSnapshot, doc, where} from 'firebase/firestore';
 import db from '../../firebase';
-import { ApolloClient, ApolloLink, InMemoryCache, HttpLink, gql } from '@apollo/client';
-import {countries} from '../../data.ts'
-import ReactCountryFlag from "react-country-flag"
-import PlayerSingleChar from './PlayerSingleChar';
+import {Container} from 'react-bootstrap';
+import PlayersSingle from './PlayerSingle';
+import {useParams} from 'react-router-dom';
+import MatchesListItem from '../Matches/MatchesListItem';
+import PlayerSingleData from './PlayerSingleData';
 
-// const httpLink = new HttpLink({ uri: 'https://api.start.gg/gql/alpha' });
-// const authLink = new ApolloLink((operation, forward) => {
-//   operation.setContext(({ headers }) => ({ headers: {
-//     authorization: "Bearer 80593c014450f43b6c9328f668170c95"
-//   }}));
-//   return forward(operation);
-// });
-// const client = new ApolloClient({
-//   cache: new InMemoryCache(),
-//   link: authLink.concat(httpLink)
-// });
+function PlayerSingle() {
+  const id = useParams().id
+  const [playerGamesPlayer1P1, setPlayerGamesPlayer1P1] = useState([])
+  const [playerGamesPlayer1P2, setPlayerGamesPlayer1P2] = useState([])
 
-function PlayersSingle({slug, gamesP1, gamesP2}) {
   const [player, setPlayer] = useState([])
 
   useEffect(() => {
-    if (String(slug)) {
-      onSnapshot(doc(db, "/players/", String(slug)), (doc) => {
-        setPlayer(doc.data());
-      });
-    }
-  }, [slug]);
+    onSnapshot(query(collection(db, `/sets`), where("Player1_id","==",id)), (snapshot) => {
+      setPlayerGamesPlayer1P1(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
+    });
+    onSnapshot(query(collection(db, `/sets`), where("Player2_id","==",id)), (snapshot) => {
+      setPlayerGamesPlayer1P2(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
+    });
 
-  const getFlagCode = (txt) => {
-    const theCountry = countries.filter(country => country.name === txt)
-    if (theCountry[0]) {
-      return theCountry[0].code
-    }
+    window.scrollTo(0, 0)
+
+    onSnapshot(doc(db, "/players/", id), (doc) => {
+      setPlayer(doc.data());
+    });
+  }, [id]);
+
+  function filterEmptyGames(game) {
+    if (game) { if (Object.keys(game).length !== 0) {
+      return true
+    } else {return false}} else {return false}
   }
 
-  // client.query({
-  //   query: gql`query User($slug: String!) {
-  //     user(slug: $slug) {
-  //       authorizations{type,url}
-  //        id
-  //       bio
-  //       name
-  //       birthday
-  //       discriminator
-  //       genderPronoun
-  //       location {
-  //         city
-  //         country
-  //         state
-  //         countryId
-  //       }
-  //       player {
-  //         id
-  //         gamerTag
-  //         user{discriminator}
-  //       }
-  //     }
-  //   }`,variables: {
-  //     "slug": slug.slug
-  //   },
-  // })
-  // .then((result) => {
-  //   setUser(result.data.user)
-
-  // })
-
   return (
-    <div className='p-single__bg'>
-      {player&&(
-        <>
-          {player.country&&(
-            <ReactCountryFlag className='mb-1' countryCode={getFlagCode(player.country)} svg />
-          )}
-          <b className="mx-1 txt-shadow ardela-nu">{player.gamerTag}</b>
-          <hr />
-          {player.country&&(
-            <label>
-              Country: {player.country} <ReactCountryFlag countryCode={getFlagCode(player.country)} svg />
-            </label>
-          )}
-          <br/>
-          {player.state&&(
-            <label>State: {player.state}</label>
-          )}
-          <PlayerSingleChar player_id={String(slug)}
-          gamesP1={gamesP1} gamesP2={gamesP2}  />
-        </>
-      )}
-    </div>
+    <Container className='player-min-h'>
+      <div>
+        {player&&(
+          playerGamesPlayer1P1&&playerGamesPlayer1P2&&(
+            <PlayerSingleData player={player} playerID={id} 
+            gamesP1={playerGamesPlayer1P1.filter(filterEmptyGames)} gamesP2={playerGamesPlayer1P2.filter(filterEmptyGames)} />
+          )
+        )}
+      </div>
+      <h5 className='ardela txt-shadow mt-2 text-center'>VODS</h5>
+      {playerGamesPlayer1P1.map((match) => (
+        <MatchesListItem match={match} />
+      ))}
+      {playerGamesPlayer1P2.map((match) => (
+        <MatchesListItem match={match} />
+      ))}  
+    </Container>
   );
 }
 
-export default PlayersSingle;
+export default PlayerSingle;
