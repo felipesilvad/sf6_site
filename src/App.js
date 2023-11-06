@@ -33,7 +33,7 @@ function App() {
         <Route path='/players/:id' element={<PlayerSingle />} exact/>
         <Route path='/addcharusage' element={<AddCharUsage />} exact />
       </Routes>
-      <FooterComponent />
+      {/* <FooterComponent /> */}
     </div>
   );
 }
