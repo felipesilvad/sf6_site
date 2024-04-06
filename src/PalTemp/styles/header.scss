@@ -1,0 +1,94 @@
+.menu-button {
+  font-weight: bold!important;
+  padding: 0.25rem 1rem!important;
+  margin: 0.25rem 0.5rem;
+  font-size: 1.1rem;
+  background: linear-gradient(to left, rgba(black,0) 50%, $highlight 50%) right;
+  background-size: 250%;
+  transition: 300ms ease-out;
+  border: 0.1rem solid $light;
+  border-left: 0.2rem solid lighten($lighter, 58);
+  color: lighten($lighter, 58);
+  --c: #60747a; /* the border color */
+  --b: 0.1rem;    /* the border thickness*/
+  --g: 0.1rem;     /* the gap on hover */
+  border-radius: 0 0.15rem 0.15rem 0;
+  padding: calc(var(--g) + var(--b));
+  --_g: #0000 25%,var(--c) 0;
+  background: 
+    conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g))
+     var(--_i,200%) 0  /200% var(--_i,var(--b))  no-repeat,
+    conic-gradient(            at bottom var(--b) left  var(--b),var(--_g))
+     0   var(--_i,200%)/var(--_i,var(--b)) 200%  no-repeat;
+  transition: .15s, background-position .15s .15s;
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  color: lighten($lighter, 58);
+  --_i: 100%;
+  transition: .15s, background-size .15s .15s;
+}
+
+.menu-button.active {
+  border-left-color: $highlight;
+}
+.navbar {
+  padding: 0 0.75rem!important;
+  --bs-navbar-brand-padding-y: 0!important;
+}
+
+.dropdown-menu {
+  --bs-dropdown-zindex: 1000;
+  --bs-dropdown-min-width: 10rem;
+  --bs-dropdown-padding-x: 0;
+  --bs-dropdown-padding-y: 0.5rem;
+  --bs-dropdown-spacer: 0.125rem;
+  --bs-dropdown-font-size: 1rem;
+  --bs-dropdown-color: white!important;
+  --bs-dropdown-bg: #141D25!important;
+  --bs-dropdown-border-color: var(--bs-border-color-translucent);
+  --bs-dropdown-border-radius: 0.25rem;
+  --bs-dropdown-border-width: 1px;
+  --bs-dropdown-inner-border-radius: calc(0.375rem - 1px);
+  --bs-dropdown-divider-bg: var(--bs-border-color-translucent);
+  --bs-dropdown-divider-margin-y: 0.5rem;
+  --bs-dropdown-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --bs-dropdown-link-color: #141D25;
+  --bs-dropdown-link-hover-color: white!important;
+  --bs-dropdown-link-hover-bg: #85CCE2!important;
+  --bs-dropdown-link-active-color: #fff;
+  --bs-dropdown-link-active-bg: $light;
+  --bs-dropdown-link-disabled-color: #adb5bd;
+  --bs-dropdown-item-padding-x: 1rem;
+  --bs-dropdown-item-padding-y: 0.25rem;
+  --bs-dropdown-header-color: #6c757d;
+  --bs-dropdown-header-padding-x: 1rem;
+  --bs-dropdown-header-padding-y: 0.5rem;
+  position: absolute;
+  z-index: var(--bs-dropdown-zindex);
+  display: none;
+  min-width: var(--bs-dropdown-min-width);
+  padding: var(--bs-dropdown-padding-y) var(--bs-dropdown-padding-x);
+  margin: 0;
+  font-size: var(--bs-dropdown-font-size);
+  color: var(--bs-dropdown-color);
+  text-align: left;
+  list-style: none;
+  background-color: var(--bs-dropdown-bg);
+  background-clip: padding-box;
+  border: var(--bs-dropdown-border-width) solid var(--bs-dropdown-border-color);
+  border-radius: 0.25rem!important;
+}
+
+.navbar-dark {
+  background-color: darken($dark, 10)!important;
+}
+
+.main-logo {
+  width: 8rem;
+}
+
+.footer-bg {
+  background-color: darken($dark,2);
+}

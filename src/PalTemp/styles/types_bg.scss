@@ -1,0 +1,76 @@
+$dark_type: #9C104A;
+$dragon_type: #D978FF;
+$ground_type: #E4AA78;
+$grass_type: #63a600;
+$electric_type: #FFDB2E;
+$water_type: #0F6EDA;
+$ice_type: #14AAB8;
+$normal_type: #967A72;
+$fire_type: #D75430;
+$dark_type: #9F0E4A;
+
+.type-img {
+  width: 1.1rem;
+  height: 1.1rem;
+  // margin-top: -0.1rem;
+  // margin-bottom: -0.2rem;
+}
+.type-txt {
+  font-size: 0.7rem;
+  font-weight: bold;
+  margin-top: 0.1rem;
+  margin-left: 0.1rem;
+}
+.type-div {
+  min-width: 4.6rem;
+  margin: 0;
+  padding: 0;
+  -webkit-clip-path: polygon(0% 0%, 95% 0%, 100% 20%, 100% 100%, 100% 100%, 20% 100%, 0% 100%, 0% 20%);
+  clip-path: polygon(0% 0%, 95% 0%, 100% 20%, 100% 100%, 100% 100%, 20% 100%, 0% 100%, 0% 20%);
+  border: solid 1px;
+  display: flex;
+  margin-right: 0.2rem;
+  z-index: 3!important;
+  position: relative!important;
+}
+
+.dark_type {
+  background-color: $dark_type;
+  border-color: lighten($dark_type,25);
+}
+.dragon_type {
+  background-color: $dragon_type;
+  border-color: lighten($dragon_type,15);
+}
+.ground_type {
+  background-color: $ground_type;
+  border-color: lighten($ground_type,25);
+}
+.electric_type {
+  background-color: $electric_type;
+  border-color: lighten($electric_type,25);
+}
+.water_type {
+  background-color: $water_type;
+  border-color: lighten($water_type,25);
+}
+.ice_type {
+  background-color: $ice_type;
+  border-color: lighten($ice_type,25);
+}
+.normal_type {
+  background-color: $normal_type;
+  border-color: lighten($normal_type,25)
+}
+.fire_type {
+  background-color: $fire_type;
+  border-color: lighten($fire_type,25)
+}
+.dark_type {
+  background-color: $dark_type;
+  border-color: lighten($dark_type,25)
+}
+.grass_type {
+  background-color: $grass_type;
+  border-color: lighten($grass_type,25)
+}

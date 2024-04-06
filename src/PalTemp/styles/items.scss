@@ -1,0 +1,115 @@
+.tec__list {
+  background-color: $tec-bg;
+}
+
+.tec-lv__bg {
+  border-bottom: 0.1rem solid lighten($lighter, 20);
+}
+.tec-lv__diamond {
+  width: 45px;
+  height: 45px;
+  position: relative;
+  margin: 2.5rem 1.75rem;
+  display: inline-block;
+  z-index: 2!important;
+}
+
+.tec-lv__diamond:before {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 45px;
+  height: 45px;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background-color: #075F72;
+  border: 0.15rem solid $tec-highlight;
+  -webkit-box-shadow:0px 0px 13px 3px rgba($tec-highlight, 0.5);
+  -moz-box-shadow: 0px 0px 13px 3px rgba($tec-highlight, 0.5);
+  box-shadow: 0px 0px 13px 3px rgba($tec-highlight, 0.5);
+}
+.tec-lv__txt {
+  line-height: 45px;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  font-size: 1.8rem;
+  width: 100%;
+  font-weight: 400;
+  color: $tec-highlight;
+  text-shadow:1px 1px 10px rgba($tec-highlight, 0.5), 1px 1px 10px rgba($tec-highlight, 0.5);
+}
+
+.tec-lv__vl {
+  border-left: 3px solid $tec-highlight;
+  height: 200px;
+  position: absolute;
+  top: -80%;
+  left: 47%;
+  z-index: -1!important;
+  -webkit-box-shadow:0px 0px 13px 1px rgba($tec-highlight, 0.3);
+  -moz-box-shadow: 0px 0px 13px 1px rgba($tec-highlight, 0.3);
+  box-shadow: 0px 0px 13px 1px rgba($tec-highlight, 0.3);
+}
+
+.tec-lv__vl-last {
+  height: 120px!important;
+}
+
+.item-square__div {
+  height: fit-content;
+  width: 100px;
+  background: rgb(18,75,158);
+  border: 0.1rem solid #5A93AA;
+  background: linear-gradient(180deg, rgba(18,75,158,1) 50%, rgba(32,118,178,1) 80%, rgb(164, 196, 219) 120%);
+  -webkit-box-shadow:0px 0px 13px 3px rgba(#5A93AA, 0.5);
+  -moz-box-shadow: 0px 0px 13px 3px rgba(#5A93AA, 0.5);
+  box-shadow: 0px 0px 13px 3px rgba(#5A93AA, 0.5);
+  margin: 0.25rem .5rem;
+}
+
+
+.item-square__type {
+  background-color: rgba(black, 0.7);
+  color: #dbb52e;
+  font-size: 0.7rem;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 2!important;
+}
+
+.item-square__img {
+  height: 70px;
+  width: 70px;
+  position: relative;
+  margin: auto;
+  position: relative;
+  z-index: 0!important;
+  margin-top: -0.25rem;
+}
+
+.item-square-title__div {
+  background-color: rgba(black, 0.6);
+  margin-top: -1rem;
+  text-align: center;
+  min-height: 2rem;
+  width: 100%;
+  position: relative;
+  z-index: 5!important;
+}
+
+.item-square-title__txt {
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 0.8rem;
+  width: 100%;
+  font-weight: normal;
+}
+
+

@@ -1,0 +1,100 @@
+@import './settings';
+@import './pal_card';
+@import './types_bg.scss';
+@import './work.scss';
+@import './filter.scss';
+@import './header.scss';
+@import './items.scss';
+
+.App {
+  background-color: #141D25;
+  color: white;
+  min-height: 100vh;
+  padding-top: 3rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.new-container {
+  max-width: 1300px!important;
+}
+
+.ardela {
+  font-family: 'Ardela Edge', sans-serif;
+  font-weight: bolder;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.ardela-nu {
+  font-family: 'Ardela Edge', sans-serif;
+  font-weight: bolder;
+  font-style: italic;
+}
+
+.roboto {
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
+}
+
+.link {
+  color: inherit!important;
+}
+
+.txt-shadow {
+  text-shadow: 2px 2px 6px #000000;
+}
+
+.margin-main {
+  padding-top: 4.5rem;
+}
+
+.mb-0{
+  margin-bottom: 0rem!important;
+}
+.mb-n1 {
+  margin-bottom: -1rem!important;
+}
+
+.font-bolder {
+  font-weight: bolder;
+}
+
+.font-weight-normal {
+  font-weight: normal!important;
+}
+
+#react-select-2-listbox, #react-select-3-listbox{
+  z-index: 3!important;
+}
+
+.Selector{
+  color: black!important;
+}
+
+.btn-close {
+  color: white!important;
+}
+
+.dark-bg {
+  background-color: $dark!important;
+}
+
+.progress-bar {
+  border-radius: 0.2rem!important;
+}
+
+.pr-1 {
+  padding-right: 0.25rem;
+}
+
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
+
+.w-80 {
+  width: 80%;
+}
+.w-20 {
+  width: 20%;
+}

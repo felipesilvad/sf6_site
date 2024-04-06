@@ -1,0 +1,48 @@
+.filter__bg {
+  background-color: $darker;
+  border-radius: 0.25rem;
+  padding: 0;
+}
+
+.filter__div {
+  border-bottom: solid 1px $lighter;
+  width: 100%;
+}
+
+.filter__label{
+  border-bottom: solid 1px $light;
+  font-weight: bold;
+  padding: 0 0.5rem;
+  margin-top: 0.5rem;
+}
+
+
+.filter__btn {
+  background-color: $dark;
+  border-radius: 0.3rem;
+  border: solid 1px $med;
+  cursor: pointer;
+  display: flex;
+  padding: 0.2rem;
+  margin: 0.2rem;
+  transition: 200ms;
+}
+
+.filter__btn:hover {
+  background-color: lighten($dark, 5);
+  border: 0.5rem;
+  border: solid 1px $lighter;
+  transition: 200ms;
+}
+
+.filter__btn-active {
+  background-color: lighten($dark, 10);
+  border: 0.5rem;
+  border: solid 1px $highlight;
+  transition: 200ms;
+}
+
+.filter__icon{
+  height: 1.6rem;
+  margin-right: 0.2rem;
+}

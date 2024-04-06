@@ -1,0 +1,56 @@
+
+.work-img {
+  height: 1.4rem;
+  margin-top: -0.2rem;
+  @media only screen and (min-width: $md) {
+    height: 1.2rem;
+  }
+}
+
+.work-m__bg {
+  background-color: rgba($dark, 0.4);
+  border-radius: 0.2rem;
+  margin-right: 0.2rem;
+  padding: 0.1rem;
+  padding-right: 0.3rem;
+  margin-top: 0.2rem;
+  white-space: nowrap;
+  position: relative!important;
+  z-index: 5!important;
+}
+
+.work-tab__div {
+  width: 100%;
+  display: flex;
+  padding: 0 0.2rem;
+  position: relative;
+}
+
+.work-tab__div:before, .work-tab__div:after {
+  content: "";
+  width: 1px;
+  top: 0px;
+  background-image: radial-gradient(circle at center, $lighter 0.2rem, transparent 0.2rem), radial-gradient(circle at center, $lighter 0.2rem, transparent 0.2rem);
+  background-size: 20px 20px;
+  background-position: top center, bottom center;
+  background-repeat: no-repeat;
+}
+.work-tab__hr {
+  margin: 0 1rem;
+  color: $lighter;
+  opacity: 0.6;
+}
+.work-lv{
+  font-weight: 500;
+  font-size: 0.5rem;
+  font-family: 'Orbitron', sans-serif!important;
+  margin-right: 0.1rem;
+}
+
+.work-tav__txt {
+  font-weight: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.85rem;
+}
